@@ -1,0 +1,55 @@
+/* reset browser to basic styles */
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+html {
+    background: url(assets/background.png);
+    background-size: cover;
+    background-position: center;
+}
+
+.container {  display: grid;
+    grid-template-columns: 0.8fr 1.4fr 0.8fr;
+    grid-template-rows: 0.2fr 2.3fr 0.5fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      ". logo ."
+      ". form ."
+      "nav nav nav";
+  }
+  
+.logo { 
+    grid-area: logo; 
+}
+
+.form { 
+    grid-area: form; 
+}
+/* position of the button that opens popup form */
+#form-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* hide the form by default */
+.form-area {
+    display: none;
+    position: fixed;
+    top: 20%;
+    left:20%;
+}
+/* style for the form container */
+#form-container {
+    background: url(assets/formbg.png);
+    padding: 10px;
+}
+
+.nav { 
+    grid-area: nav; 
+}
