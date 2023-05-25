@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz@6..96&family=Chakra+Petch:wght@400;500;700&family=Libre+Bodoni:ital,wght@0,400;0,500;1,400&family=Merienda:wght@700&family=Monoton&family=Roboto+Slab:wght@300;700&display=swap');
+
 /* reset browser to basic styles */
 html, body {
     height: 100%;
@@ -6,16 +8,17 @@ html, body {
     padding: 0;
     font-family: sans-serif;
 }
-
+/* background image style */
 html {
     background: url(assets/background.png);
     background-size: cover;
     background-position: center;
 }
-
-.container {  display: grid;
+/* css grid set up */
+.container {  
+    display: grid;
     grid-template-columns: 0.8fr 1.4fr 0.8fr;
-    grid-template-rows: 0.2fr 2.3fr 0.5fr;
+    grid-template-rows: 0.2fr 2.4fr 0.4fr;
     gap: 0px 0px;
     grid-auto-flow: row;
     grid-template-areas:
@@ -23,36 +26,151 @@ html {
       ". form ."
       "nav nav nav";
   }
-  
+
+/* where to put the logo of the application */
 .logo { 
     grid-area: logo; 
 }
 
+/* where to put the input form */
 .form { 
     grid-area: form; 
 }
-/* position of the button that opens popup form */
-.open {
-    background-color: transparent;
-    border: none;
-    padding-top: 40%;
+
+/* set the position and style of form labels and fields*/
+input, label {
+    display: block;
+    margin-bottom: 5px;
 }
-.open img{
-    width: 45%;
-    height: auto;
+
+label {
+    color: #ffffff;
+    font-family: 'Chakra Petch', sans-serif;
+}
+
+input {
+    width: 100%;
+    height: 30px;
+    border-radius: 15px;
+    border: none;
+    background-color: #E2BF77;
+    padding-left: 5px;/*make sure the text won't span out of the rounded border*/
+}
+/* highlight the border of text input field when selected by the user */
+input[type='text']:focus {
+    box-shadow: 0 0 0 2px #ffffff;
+    outline: solid transparent;
+    font-size: 100%;
+    padding-left: 5px;/*make sure the text won't span out of the rounded border*/
+}
+
+/* specify track and thumb style for the slider */
+#rating {
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+  }
+#rating::-webkit-slider-runnable-track {
+    background: #E2BF77;
+    border-radius: 5px;
+    width: 10px;
+    height: 10px;
+}
+
+#rating::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none; 
+    width:25px;
+    height: 25px;
+    border-radius: 50%;
+    cursor: pointer; /*change the cursor appearance when dragging the slider thumb*/
+    margin-top: -7px;
+    background: #ffffff; 
+  }  
+
+/* adding description to the start and end of the range track */
+#rating::before, #rating::after {
+    content: 'Terrible';
+    display: inline-block;
+    transform: translateY(5px);
+    font-size: 14px;
+    color:#000000;
+}
+
+#rating::after {
+    padding: 0;
+    padding-right: 5px;;
+    content: 'Amazing';
+}
+
+/* style and place the rating indicator in the middle of the slider */
+.form-row p {
+    color: #ffffff;
+    font-family: 'Chakra Petch', sans-serif;
+    margin: 0px;
+    padding: 0px;
+    margin-left: 190px;
+    padding-left: 132px;
 }
 
 /* hide the form by default */
 .form-area {
     display: none;
     position: fixed;
-    top: 20%;
-    left:20%;
+    top: 13%;
+    left: 22%;
+    width: 57%;
+    height: 70%;
+    background-color: #000000;
+    border-radius: 25px;
+    outline: solid;
+    outline-offset: -15px;
+    outline-color: #E2BF77;
+    background-size:cover;
+    background-repeat: no-repeat;
+    text-align: center;/*center the form container*/
+    padding-top: 40px;
 }
 /* style for the form container */
 #form-container {
-    background: url(assets/formbg.png);
-    padding: 10px;
+    width: 80%;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    text-align: left;
+}
+
+/* review field style */
+textarea {
+    width: 100%;
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 15px;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    background-color:#E2BF77;
+    padding: 0 3px 0 3px;
+}
+
+textarea:focus {
+    box-shadow: 0 0 0 2px #ffffff;
+}
+
+/* make the placeholder in the text input field more obivous*/
+::placeholder {
+    color:#000000;
+}
+
+/* position of the button that opens popup form */
+.open {
+    background-color: transparent;
+    border: none;
+    padding-top: 40%;
+    padding-left: 2%;
+}
+.open img{
+    width: 55%;
+    height: auto;
 }
 
 .nav { 

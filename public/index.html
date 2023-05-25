@@ -28,14 +28,14 @@
           </div>
           <div class="form-row">
             <label for="director">Director(s)</label>
-            <input type="text" name="director" id="director" required="true">
+            <input type="text" name="director" id="director" placeholder= "use '/' to separate names" required="true">
           </div>
           <div class="form-row">
             <label for="character">Favorite Character(s)</label>
-            <input type="text" name="character" id="character" required="true">
+            <input type="text" name="character" id="character" placeholder= "use '/' to separate names" required="true">
           </div>
           <div class="form-row">
-            <label for="filmName">Genre(s)</label>
+            <label for="genre">Genre(s)</label>
             <select name="genre" id="genre" multiple>
               <option value="action">Action</option>
               <option value="sci-fi">Science Fiction</option>
@@ -54,20 +54,22 @@
           </div>
           <div class="form-row">
             <!-- Refer to code from https://blog.hubspot.com/website/html-slider -->
-            <label for="rating">Rating</label>
-            <input type="range" min='0' max='10' value="5" step="0.1" oninput='rangeValue.innerText = this.value' name="rating" id="rating" required="true">
+            <!-- rate a film on a scale of 1 to 10, with 0.1 as the minimum step-->
+            <label style="margin-bottom: -10px; padding-bottom: -10px;" for="rating">Rating</label>
+            <!-- display the current rating value by setting the innerText of this p element as the value of the range input  -->
             <p id="rangeValue">5</p>
+            <input type="range" min='0' max='10' value="5" step="0.1" oninput='rangeValue.innerText = this.value' name="rating" id="rating" required="true">
           </div>
           <div class="form-row">
             <label for="review">Review</label>
-            <input type="text" name="review" id="review" required="true">
+            <!-- only review is not required to be filled, it has a word limit of approximately 60-100 words -->
+            <textarea rows="5" name="review" id="review" maxlength="400"></textarea>
           </div>
           <div class="form-row">
-            <input type="submit" onclick="closeForm()" value="SAVE"/>
+            <input style='font-size: 15px; font-weight: bold;' type="submit" onclick="closeForm()" value="SAVE"/>
           </div>
         </form>
       </div> 
-
     </div>
     <div class="nav"></div>
   </main>
