@@ -46,6 +46,9 @@ input, label {
 label {
     color: #ffffff;
     font-family: 'Chakra Petch', sans-serif;
+    font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 2px;
 }
 
 input {
@@ -83,7 +86,7 @@ input[type='text']:focus {
     height: 25px;
     border-radius: 50%;
     cursor: pointer; /*change the cursor appearance when dragging the slider thumb*/
-    margin-top: -7px;
+    margin-top: -8px;
     background: #ffffff; 
   }  
 
@@ -116,10 +119,10 @@ input[type='text']:focus {
 .form-area {
     display: none;
     position: fixed;
-    top: 13%;
+    top: 12%;
     left: 22%;
     width: 57%;
-    height: 70%;
+    height: 72%;
     background-color: #000000;
     border-radius: 25px;
     outline: solid;
@@ -134,9 +137,9 @@ input[type='text']:focus {
 #form-container {
     width: 80%;
     display: inline-block;
-    margin-left: auto;
+    margin-left: auto;/* keep the form rows in the middle */
     margin-right: auto;
-    margin-top: 20px;
+    margin-top: 5px;
     text-align: left;
 }
 
@@ -161,6 +164,19 @@ textarea:focus {
     color:#000000;
 }
 
+/* change the color of the submit button when user hover over it */
+#submit {
+    margin-top: 10px;
+    margin-left: 25%;
+    cursor: pointer;
+    width: 50%;
+    transition-duration: 0.5s;
+}
+
+#submit:hover {
+    background-color: #ffffff;
+}
+
 /* position of the button that opens popup form */
 .open {
     background-color: transparent;
@@ -168,9 +184,15 @@ textarea:focus {
     padding-top: 40%;
     padding-left: 2%;
 }
+/* amplify the button when users hover over it */
 .open img{
     width: 55%;
     height: auto;
+    transition: all 0.4s ease-in-out;
+}
+
+.open img:hover {
+    transform: scale(1.1,1.1);
 }
 
 .nav { 

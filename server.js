@@ -17,6 +17,6 @@ let server = app.listen(8888, function(){
 
 //Open your web browser and put in the URL - http://localhost:8888
 
-//To stop your server, press 'Command + C'
+//To stop your server, press 'Control + C'
 
 //start web server: npm run start
