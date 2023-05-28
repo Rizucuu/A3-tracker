@@ -7,7 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>&#10032;Cinephile’s Attic</title>
   <link href="style.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/css/multi-select-tag.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/css/multi-select-tag.css"><!-- core stylesheet for building multi-select-tage for the genre selection in the input form  -->
+  <link rel="stylesheet" href="node_modules/@glidejs/glide/dist/css/glide.core.min.css"><!-- core stylesheet for building glide.js carousel  -->
+  <link rel="stylesheet" href="node_modules/@glidejs/glide/dist/css/glide.theme.min.css"><!-- theme stylesheet for building glide.js carousel  -->
 </head>
 
 <body>
@@ -78,13 +80,31 @@
         </form>
       </div> 
     </div>
-    <!-- Hold and display the tracked items, users get to navigate and interact with these items -->
-    <div class="nav"></div>
+    <!-- Overview sections that keep track of all film entries -->
+    <div id="overview">
+      <!-- buttons that make this sections slide up/down when needed, refer to the code from https://codepen.io/NoName84/pen/aNbyyz -->
+      <button class='slide' onclick="slideUp('overview');">Slide Up</button>
+      <button class='slide' onclick="slideDown('overview');">Slide Down</button>
+      <!-- A carousel that holds and displays the tracked items, users get to navigate and interact with these items -->
+      <div class="glide">
+        <div data-glide-el="track" class="glide__track">
+          <ul class="glide__slides">
+            <li class="glide__slide"></li>
+            <li class="glide__slide"></li>
+            <li class="glide__slide"></li>
+          </ul>
+        </div>
+      </div>
+    </div> 
   </main>
-  <script src="script.js"></script>
+  <script type="module" src="script.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/js/multi-select-tag.js"></script>
   <script>
     new MultiSelectTag('genre')
+  </script>
+  <script src="node_modules/@glidejs/glide/dist/glide.min.js"></script>
+  <script>
+    new Glide('.glide').mount()
   </script>
 </body>
 
