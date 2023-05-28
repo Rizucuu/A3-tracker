@@ -107,6 +107,9 @@ form.addEventListener('submit', function (event) {
         )
 })
 
+//make sure other film entries will still be shown when the page get refreshed
+displayFilms();
+
 //function that controls the overview section to slide up/down
 function slideUp(el) {
     var elem = document.getElementById(el);
