@@ -20,7 +20,7 @@
     <!-- popup form, refer to code from https://www.w3schools.com/howto/howto_js_popup_form.asp -->
     <div class="form">
       <!-- button to open the form -->
-      <button class="open" onclick="openForm()"><img src='assets/form.png' alt='button that opens up a form to collect informations of a film'></button>
+      <button id="open"><img src='assets/form.png' alt='button that opens up a form to collect informations of a film'></button>
       <!-- form content -->
       <div class="form-area" id="input">
         <form id="form-container">
@@ -75,7 +75,7 @@
           </div>
        <!-- button: save the input -->
           <div class="form-row">
-            <input id='submit' style='font-size: 20px; font-weight: bold;' type="submit" onclick="closeForm()" value="SAVE"/>
+            <input id='submit' style='font-size: 20px; font-weight: bold;' type="submit" value="SAVE"/>
           </div>
         </form>
       </div> 
@@ -83,8 +83,8 @@
     <!-- Overview sections that keep track of all film entries -->
     <div id="overview">
       <!-- buttons that make this sections slide up/down when needed, refer to the code from https://codepen.io/NoName84/pen/aNbyyz -->
-      <button class='slide' onclick="slideUp('overview');">Slide Up</button>
-      <button class='slide' onclick="slideDown('overview');">Slide Down</button>
+      <button id='slideUp' onclick="slideUp('overview');">Slide Up</button>
+      <button id='slideDown' onclick="slideDown('overview');">Slide Down</button>
       <!-- A carousel that holds and displays the tracked items, users get to navigate and interact with these items -->
       <div class="glide">
         <div data-glide-el="track" class="glide__track">

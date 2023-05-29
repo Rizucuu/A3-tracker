@@ -43,7 +43,7 @@ function displayFilms() {
     let localFilms = JSON.parse(localStorage.getItem('films'));
     //Make sure localStorage is not empty
     if (localFilms !== null) {
-        //align image to the genre of the film item in the array
+        //align image to the genre of the film item in the array 
         localFilms.forEach(function(film) {
             let filmImage = null;
             switch (film.genres.value) {
@@ -86,10 +86,12 @@ const form = document.getElementById('form-container');
 const filmlist = document.getElementsByClassName('glide__slides');
 
 // change the display mode of the input form so it appears
-function openForm () {
+let open = document.getElementById('open');
+console.log(open);
+open.addEventListener("click", function(event) {
     document.getElementById('input').style.display = 'block';
-    document.body.style.backgroundColor = 'rgb(0,0,0,0.5)';//add transparent background
-}
+    document.body.style.backgroundColor = 'rgb(0,0,0,0.5)'; //add transparent background
+})
 
 //When save button is clicked, hide the input form and store the new entry to the local storage
 form.addEventListener('submit', function (event) {
@@ -111,11 +113,12 @@ form.addEventListener('submit', function (event) {
 displayFilms();
 
 //function that controls the overview section to slide up/down
-function slideUp(el) {
+let slideUp = document.getElementById('slideUp');
+slideUp.addEventListener('click', function(event) {
     var elem = document.getElementById(el);
     elem.style.transition = 'all 1s ease-in-out';
     elem.style.transform = 'translateY(-1400px)';
-}
+})
 
 function slideDown(el) {
     var elem = document.getElementById(el);

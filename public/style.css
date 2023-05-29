@@ -16,6 +16,7 @@ html {
 }
 /* css grid set up */
 .container {  
+    position:relative;
     display: grid;
     grid-template-columns: 0.8fr 1.4fr 0.8fr;
     grid-template-rows: 0.2fr 2.4fr 0.4fr;
@@ -25,16 +26,21 @@ html {
       ". logo ."
       ". form ."
       "nav nav nav";
+    z-index: 1; /* stack under the overview section*/
   }
 
 /* where to put the logo of the application */
 .logo { 
+    position: relative;
     grid-area: logo; 
+    z-index: 1;
 }
 
 /* where to put the input form */
 .form { 
+    position: absolute; /* placed relative to the logo*/
     grid-area: form; 
+    z-index: 1;
 }
 
 /* set the position and style of form labels and fields*/
@@ -178,27 +184,33 @@ textarea:focus {
 }
 
 /* position of the button that opens popup form */
-.open {
+#open {
     background-color: transparent;
     border: none;
     padding-top: 40%;
     padding-left: 2%;
 }
 /* amplify the button when users hover over it */
-.open img{
+#open img{
     width: 55%;
     height: auto;
     transition: all 0.4s ease-in-out;
 }
 
-.open img:hover {
+#open img:hover {
     transform: scale(1.1,1.1);
 }
 
-/* overview sections style */
+/* overview sections placement and style */
 #overview {
+    grid-area: nav;
+    display: flex;
+    justify-content: center;
+    align-items:flex-start;
     background:#000000;
-    border-radius: 25px;
-    margin: 50px auto;/* horizontally center the overview section*/
-    width: 90%;
+    border-radius: 25px 25px 0 0;
+    margin: auto;/* horizontally center the overview section*/
+    width: 1400px;
+    transform: translateY(500px);
+    z-index: 2;
 }
