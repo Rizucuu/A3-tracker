@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/css/multi-select-tag.css"><!-- core stylesheet for building multi-select-tage for the genre selection in the input form  -->
   <link rel="stylesheet" href="node_modules/@glidejs/glide/dist/css/glide.core.min.css"><!-- core stylesheet for building glide.js carousel  -->
   <link rel="stylesheet" href="node_modules/@glidejs/glide/dist/css/glide.theme.min.css"><!-- theme stylesheet for building glide.js carousel  -->
+  <link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" /><!-- stylesheet for tagify.js multiple selections-->
 </head>
 
 <body>
@@ -41,22 +42,8 @@
           </div>
       <!-- multiple selection: film genres -->
           <div class="form-row">
-            <label for="genre">Genre(s)</label>
-            <select name="genre" id="genre" multiple>
-              <option value="action">Action</option>
-              <option value="sci-fi">Science Fiction</option>
-              <option value="drama">Drama</option>
-              <option value="crime">Crime</option>
-              <option value="fantasy">Fantasy</option>
-              <option value="comedy">Comedy</option>
-              <option value="horror">Horror</option>
-              <option value="romance">Romance</option>
-              <option value="sports">Sports</option>
-              <option value="thriller">Thriller</option>
-              <option value="mystery">Mystery</option>
-              <option value="war">War</option>
-              <option value="western">Western</option>
-            </select>
+            <label for="tags">Genre(s)</label>
+            <input type="text" name="tags" id="tags" placeholder="type or select film genre(s)" required="true">
           </div>
       <!-- range input: film rating 0 to 10 -->
           <div class="form-row">
@@ -97,15 +84,15 @@
       </div>
     </div> 
   </main>
-  <script type="module" src="script.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/js/multi-select-tag.js"></script>
-  <script>
-    new MultiSelectTag('genre')
-  </script>
+  <!-- multiple selection tags library -->
+  <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
+  <!-- image carousel library -->
   <script src="node_modules/@glidejs/glide/dist/glide.min.js"></script>
   <script>
     new Glide('.glide').mount()
   </script>
+  <script src="script.js"></script>
 </body>
 
 </html>

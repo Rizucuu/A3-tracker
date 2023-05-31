@@ -14,7 +14,7 @@ Mockup(left) and Prototype(right)
 ### Iterations
 ### Improvements
 ### Lessons learned & Best practices
-* Learned that in order to handle multiple images in js file, I need to use glob resolvers and import them using a wildcard (*). However, after adding type="module” attribute to the script.js tag in html, the onClick functions used to open the pop-up form and slide up overview can’t be triggered due to its global scope. To resolve this, I had to replace them with event listener functions to trigger the interactions.
+* I attempted to use a GitHub library to create a dropdown list that allows for multiple genre selections, but its documentation is vague and incomplete, without any explanations on how it works and the output it produces. Consequently, I couldn’t retrieve all of the selected options to be used in JS functions. I then switched to the recommended tagify library, which gives clear and detailed instructions throughout, and I was able to track and utilize all the selected options. Through this experience, I have come to understand the significance of utilizing a thoroughly documented library and the benefits of keeping track of the development process.
 ## Overview
 ### Lessons learned & Best practices
 * I attempted to utilize the IMDb API to locate the exact movie poster for the thumbnail image. However, it appears that all the available APIs require payment for permission to use. Thus, I chose to use preset images that align with the film's genre instead.
@@ -40,8 +40,40 @@ npm run start
 
 ## Guidance for future developers:
 ## References
-habibmhamadi. (2022). *multi-select-tag* [JS Library]. 
-https://github.com/habibmhamadi/multi-select-tag
-
 jedrzejchalubek. (2022). glide.js [JS Library]. 
 https://github.com/glidejs/glide
+
+Yair Even Or. (2023). tagify [JS Library]. 
+https://github.com/yairEO/tagify
+
+## Assets
+Freepik. (n.d.). *Layout of popcorn with cinema objects* [image]. Freepik. 
+https://www.freepik.com/free-photo/layout-popcorn-with-cinema-objects_2317675.htm#query=movie&position=19&from_view=search&track=robertav1_2_sidr 
+
+Gamer Land. (n.d.). *Mafia 2 Definitive Edition 4k* [image]. Pinterest. 
+https://www.pinterest.com.au/pin/446560119306578111/ 
+
+WallpaperFlare. (n.d.). *HD wzllpaper: Dunkirk* [image]. Wallpaper Flare.
+https://www.wallpaperflare.com/action-drama-2017-4k-dunkirk-christopher-nolan-history-wallpaper-qrryk
+
+WallpaperFlare. (n.d.). *HD wzllpaper: anarchy* [image]. Wallpaper Flare.
+https://www.wallpaperflare.com/anarchy-biker-crime-drama-series-sons-thriller-wallpaper-bhckc
+
+WallpaperFlare. (n.d.). *HD wzllpaper: action, adventure* [image]. Wallpaper Flare.
+https://www.wallpaperflare.com/action-adventure-drama-film-helicopter-movie-poster-rambo-wallpaper-moekn
+
+WallpaperFlare. (n.d.). *HD wzllpaper: fantasy, science fiction* [image]. Wallpaper Flare.
+https://www.wallpaperflare.com/fantasy-science-fiction-mountains-sci-fi-planets-digital-art-wallpaper-bldeg
+
+WallpaperFlare. (n.d.). *HD wzllpaper: silhouette* [image]. Wallpaper Flare.
+https://www.wallpaperflare.com/silhouette-of-person-standing-in-front-of-tree-wallpaper-game-animation-illustration-wallpaper-hib
+
+WallpaperFlare. (n.d.). *HD wzllpaper: Rick and Morty* [image]. Wallpaper Flare.
+https://www.wallpaperflare.com/rick-and-morty-fan-art-rick-and-morty-digital-wallpaper-cartoons-wallpaper-poaoz
+
+WallpaperFlare. (n.d.). *HD wzllpaper: hacker* [image]. Wallpaper Flare.
+https://www.wallpaperflare.com/1920x1080-px-anarchy-computer-hacker-hacking-internet-wallpaper-sthpq
+
+WallpaperFlare. (n.d.). *HD wzllpaper: comedy* [image]. Wallpaper Flare.
+https://www.wallpaperflare.com/comedy-how-i-met-your-mother-series-sitcom-television-wallpaper-mkdiq
+

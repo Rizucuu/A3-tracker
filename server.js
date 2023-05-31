@@ -10,7 +10,7 @@ app.get('/', function(req,res) {
 })
 //Start the server, listening for incoming traffic and logging a message to the console:
 let server = app.listen(8888, function(){
-    console.log("App server is running on port 8888");
+    console.log("App server is running on http://localhost:8888");
 })
 
 //Back in the terminal, run your server using the command: node server.js

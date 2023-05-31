@@ -61,8 +61,9 @@ input {
     width: 100%;
     height: 30px;
     border-radius: 15px;
-    border: none;
+    border: solid 0.5px #ffffff;
     background-color: #E2BF77;
+    font-family: 'Chakra Petch', sans-serif;
     padding-left: 5px;/*make sure the text won't span out of the rounded border*/
 }
 /* highlight the border of text input field when selected by the user */
@@ -96,11 +97,22 @@ input[type='text']:focus {
     background: #ffffff; 
   }  
 
+/* adding hover effect when the user is dragging the rating thumb*/
+#rating::-webkit-slider-thumb:hover {
+    box-shadow: 0 0 0 5px rgba(0,0,0,0.5);
+}
+#rating:active::-webkit-slider-thumb {
+    box-shadow: 0 0 0 5px rgba(0,0,0,0.5);
+}
+#rating:focus::-webkit-slider-thumb {
+    box-shadow: 0 0 0 5px rgba(0,0,0,0.5);
+}
+
 /* adding description to the start and end of the range track */
 #rating::before, #rating::after {
     content: 'Terrible';
     display: inline-block;
-    transform: translateY(5px);
+    transform: translateY(7px);
     font-size: 14px;
     color:#000000;
 }
@@ -118,7 +130,7 @@ input[type='text']:focus {
     margin: 0px;
     padding: 0px;
     margin-left: 190px;
-    padding-left: 132px;
+    padding-left: 134px;
 }
 
 /* hide the form by default */
@@ -149,13 +161,65 @@ input[type='text']:focus {
     text-align: left;
 }
 
+/* multi-selection tag form row appearance*/
+.tagify {
+    background-color: #E2BF77;
+    background-color: none;
+    border-radius: 5px;
+    width: 101%;
+    font-family: 'Chakra Petch', sans-serif;
+}
+
+/* tag appearance */
+.form-row .tagify__tag {
+    --tag-bg: white;
+    --tag-border-radius: 15px;
+    --tag-hover: rgba(255,255,255,0.5);
+    border: none;
+    font-family: 'Chakra Petch', sans-serif;
+}
+
+/* dropdown list appearance*/
+.tags-drop .tagify__dropdown__item {
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 15px;
+    padding: .3em .5em;
+    border: 2px solid #ffffff;
+    background: #E2BF77;
+    margin: .2em;
+    font-size: .85em;
+    color: black;
+    transition: 0s;
+    font-family: 'Chakra Petch', sans-serif;
+  }
+  
+.tags-drop .tagify__dropdown__item--active{
+color: black;
+}
+/* drop down list hover effect */
+.tags-drop .tagify__dropdown__item:hover{
+background: white;
+border-color: black;
+}
+
+.tags-drop .tagify__dropdown__item--hidden {
+    max-width: 0;
+    max-height: initial;
+    padding: .3em 0;
+    margin: .2em 0;
+    white-space: nowrap;
+    text-indent: -20px;
+    border: 0;
+}
+
 /* review field style */
 textarea {
     width: 100%;
     font-family: 'Chakra Petch', sans-serif;
     font-size: 15px;
     outline: none;
-    border: none;
+    border: solid 0.5px #ffffff;
     border-radius: 10px;
     background-color:#E2BF77;
     padding: 0 3px 0 3px;
@@ -167,7 +231,7 @@ textarea:focus {
 
 /* make the placeholder in the text input field more obivous*/
 ::placeholder {
-    color:#000000;
+    color: rgba(0,0,0,0.5);
 }
 
 /* change the color of the submit button when user hover over it */
@@ -211,6 +275,35 @@ textarea:focus {
     border-radius: 25px 25px 0 0;
     margin: auto;/* horizontally center the overview section*/
     width: 1400px;
-    transform: translateY(500px);
+    transform: translateY(470px);
     z-index: 2;
+}
+/* style and place for interactive buttons used to slide the overview section up and down */
+#slideUp, #slideDown{
+    border-radius: 15px;
+    width: 9%;
+    height: 20%;
+    margin-top: 15px;
+    outline: solid 2px #ffffff;
+    border: none;
+    background-color: #E2BF77;
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 21px;
+    transition-duration: 0.4s;
+}
+
+#slideUp {
+    margin-left: 50px;
+    margin-right: 20px;
+}
+
+/* hover effect */
+#slideUp:hover {
+    background-color: #ffffff;
+    outline:#E2BF77;
+}
+
+#slideDown:hover {
+    background-color: #ffffff;
+    outline:#E2BF77;
 }

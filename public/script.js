@@ -1,6 +1,15 @@
-//Handling images using glob resolvers, refer to the code from https://github.com/robdongas/deco2017-task-tracker/commit/b070dc4ff3d621b124326d04366782299a4961c8?diff=split
-import images from './images/thumbnails/*.png';
- console.log(images)
+//get the input from multiple genres selection tags
+const tagsInput = document.getElementById("tags");
+const tagify = new Tagify(tagsInput, {
+    whitelist: ['Science Fiction', "Crime", "Drama", "Action", "Fantasy", "Comedy", "Horror", "Romance", "Sports", "Thriller", "Mystery", "War", "Western"], // whitelist of all available film genres
+    maxTags: 13,
+    dropdown: {
+      enabled: 0, // Enable the dropdown
+      classname: "tags-drop", //classname for the dropdown list
+      maxItems: 13, // Maximum number of suggestions to display
+      closeOnSelect: false // Keep the dropdown open after selecting a suggestion
+    }
+});
 
 //Create a function to add the new film entry to the array
 function addFilm(name, directors, characters, genres, rating, review) {
@@ -15,6 +24,7 @@ function addFilm(name, directors, characters, genres, rating, review) {
         id: Date.now(),//automatically generating an unique identifier for the new entry
         date: new Date().toISOString(),//automatically record the date when the entry is added
     }
+    console.log(genres);
 
     //fetching and parse a string from localStorage into js structure
     let localFilms = JSON.parse(localStorage.getItem('films'));
@@ -98,30 +108,31 @@ form.addEventListener('submit', function (event) {
     event.preventDefault(); //stop the event from reloading the page and send out the information by default
     document.getElementById('input').style.display = 'none';//hide the form
     document.body.style.backgroundColor = 'rgb(0,0,0,0)';//get rid of the background color
+    const tagsArray = tagify.value.map((tag) => tag.value); //extract the selected genre selections as an array
     //call the function to store the new entry 
     addFilm(
         form.elements.filmName.value,
         form.elements.director.value,
         form.elements.character.value,
-        form.elements.genre.value,
+        tagsArray,
         form.elements.rating.value,
         form.elements.review.value,
         )
+    console.log(tagsArray);
 })
 
 //make sure other film entries will still be shown when the page get refreshed
 displayFilms();
 
 //function that controls the overview section to slide up/down
-let slideUp = document.getElementById('slideUp');
-slideUp.addEventListener('click', function(event) {
+function slideUp(el) {
     var elem = document.getElementById(el);
     elem.style.transition = 'all 1s ease-in-out';
-    elem.style.transform = 'translateY(-1400px)';
-})
+    elem.style.transform = 'translateY(-190%)';
+}
 
 function slideDown(el) {
     var elem = document.getElementById(el);
     elem.style.transition = 'all 1s ease-in-out';
-    elem.style.transform = 'translateY(1400px)';
+    elem.style.transform = 'translateY(500px)';
 }
