@@ -45,6 +45,10 @@ function addFilm(name, directors, characters, genres, rating, review) {
     displayFilms();
 }
 
+//Create variables to hold HTML elements using DOM
+const form = document.getElementById('form-container');
+const filmlist = document.getElementsByClassName('glide__slides');
+
 //A function that loops through localStorage to display all the stored film entries
 function displayFilms() {
     //clear the HTML list first
@@ -53,16 +57,55 @@ function displayFilms() {
     let localFilms = JSON.parse(localStorage.getItem('films'));
     //Make sure localStorage is not empty
     if (localFilms !== null) {
-        //align image to the genre of the film item in the array 
+        //align image to the first selected genre of the film item
         localFilms.forEach(function(film) {
-            let filmImage = null;
-            switch (film.genres.value) {
-
+            let filmImage = null
+            switch (film.genres[0]) {
+                case 'Action':
+                    filmImage = './images/thumbnails/action.png'
+                    break;
+                case 'Comedy':
+                    filmImage = './images/thumbnails/comedy.png'
+                    break;
+                case 'Crime':
+                    filmImage = './images/thumbnails/crime.png'
+                    break;
+                case 'Drama':
+                    filmImage = './images/thumbnails/drama.png'
+                    break;
+                case 'Fantasy':
+                    filmImage = './images/thumbnails/fantasy.png'
+                    break;
+                case 'Horror':
+                    filmImage = './images/thumbnails/horror.png'
+                    break;
+                case 'Mystery':
+                    filmImage = './images/thumbnails/mystery.png'
+                    break;
+                case 'Romance':
+                    filmImage = './images/thumbnails/romance.png'
+                    break;
+                case 'Science Fiction':
+                    filmImage = './images/thumbnails/scifi.png'
+                    break;
+                case 'Sports':
+                    filmImage = './images/thumbnails/sport.png'
+                    break;
+                case 'Thriller':
+                    filmImage = './images/thumbnails/Thriller.png'
+                    break;
+                case 'War':
+                    filmImage = './images/thumbnails/war.png'
+                    break;
+                case 'Western':
+                    filmImage = './images/thumbnails/western.png'
+                    break;
             }
             //Create items for the DOM and add to the display list
             let item = document.createElement('li');
-            item.setAttribute('data-id', film.id);
-            item.innerHTML = `<h2>${film.genres}</h2><h2>${film.rating}</h2><img src='${taskImage}' width='50'/><h1>${film.name}</h1><h2>Directed by: <strong>${film.directors}</strong></h2>
+            item.setAttribute('data-id', film.id);//assign id to the item so it can be identified and deleted
+            item.setAttribute('class', 'glide__slides');//set the class name so it can be styled by glide.js
+            item.innerHTML = `<h2>${film.genres}</h2><h2>${film.rating}</h2><img src='${filmImage}'/><h1>${film.name}</h1><h2>Directed by: <strong>${film.directors}</strong></h2>
             <h2>Fave Character(s): <strong>${film.characters}</strong></h2><p class='review'>${film.review}</p><p class='date'>${film.date}</p>`;
             filmlist.appendChild(item);
 
@@ -90,10 +133,6 @@ function displayFilms() {
         })//Closing brackets for for loop
     }//Closing bracket for if statement
 }
-
-//Create variables to hold HTML elements using DOM
-const form = document.getElementById('form-container');
-const filmlist = document.getElementsByClassName('glide__slides');
 
 // change the display mode of the input form so it appears
 let open = document.getElementById('open');
@@ -128,11 +167,11 @@ displayFilms();
 function slideUp(el) {
     var elem = document.getElementById(el);
     elem.style.transition = 'all 1s ease-in-out';
-    elem.style.transform = 'translateY(-190%)';
+    elem.style.transform = 'translateY(-190%)';//vertically upward
 }
 
 function slideDown(el) {
     var elem = document.getElementById(el);
     elem.style.transition = 'all 1s ease-in-out';
-    elem.style.transform = 'translateY(500px)';
+    elem.style.transform = 'translateY(500px)';//vertically downward
 }

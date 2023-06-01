@@ -1,13 +1,16 @@
 # Development Documentation
 ## Home page
+### Development process
+### Iterations
+### Improvements
 ### Lessons learned & Best practices
 * I originally intended to place the overview section above the homepage when the former expands. However, the grid layout used on the homepage caused it to be pushed to the side by the overview section. I tried to make them overlap by applying z-index to both sections, but this didn't work. I then learned that z-index only works on elements that have a position setting, so I applied this to all sections, which messed up the placement of elements. After several attempts, I used relative and absolute positioning and flexbox to fix it.
 ## User input form
 ![Desktop Home page comparison]
-()
+(url)
 Mockup(Up) and Prototype(down)
 ![Mobile Home page comparison]
-()
+(url)
 Mockup(left) and Prototype(right)
 
 ### Development process
@@ -16,6 +19,9 @@ Mockup(left) and Prototype(right)
 ### Lessons learned & Best practices
 * I attempted to use a GitHub library to create a dropdown list that allows for multiple genre selections, but its documentation is vague and incomplete, without any explanations on how it works and the output it produces. Consequently, I couldn’t retrieve all of the selected options to be used in JS functions. I then switched to the recommended tagify library, which gives clear and detailed instructions throughout, and I was able to track and utilize all the selected options. Through this experience, I have come to understand the significance of utilizing a thoroughly documented library and the benefits of keeping track of the development process.
 ## Overview
+### Development process
+### Iterations
+### Improvements
 ### Lessons learned & Best practices
 * I attempted to utilize the IMDb API to locate the exact movie poster for the thumbnail image. However, it appears that all the available APIs require payment for permission to use. Thus, I chose to use preset images that align with the film's genre instead.
 ## Application Configuration:
