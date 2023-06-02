@@ -47,7 +47,8 @@ function addFilm(name, directors, characters, genres, rating, review) {
 
 //Create variables to hold HTML elements using DOM
 const form = document.getElementById('form-container');
-const filmlist = document.getElementsByClassName('glide__slides');
+//new variable to hold the carousel list that displays new film items
+const filmlist = document.getElementsByClassName('splide__list')[0];
 
 //A function that loops through localStorage to display all the stored film entries
 function displayFilms() {
@@ -59,7 +60,7 @@ function displayFilms() {
     if (localFilms !== null) {
         //align image to the first selected genre of the film item
         localFilms.forEach(function(film) {
-            let filmImage = null
+            let filmImage = './images/thumbnails/action.png';
             switch (film.genres[0]) {
                 case 'Action':
                     filmImage = './images/thumbnails/action.png'

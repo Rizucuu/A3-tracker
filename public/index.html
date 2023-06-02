@@ -7,9 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>&#10032;Cinephile’s Attic</title>
   <link href="style.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/css/multi-select-tag.css"><!-- core stylesheet for building multi-select-tage for the genre selection in the input form  -->
-  <link rel="stylesheet" href="node_modules/@glidejs/glide/dist/css/glide.core.min.css"><!-- core stylesheet for building glide.js carousel  -->
-  <link rel="stylesheet" href="node_modules/@glidejs/glide/dist/css/glide.theme.min.css"><!-- theme stylesheet for building glide.js carousel  -->
+  <!-- Link to the file hosted on your server, -->
+  <link rel="stylesheet" href="splide.min.css">
   <link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" /><!-- stylesheet for tagify.js multiple selections-->
 </head>
 
@@ -73,12 +72,12 @@
       <button id='slideUp' onclick="slideUp('overview');">Slide Up</button>
       <button id='slideDown' onclick="slideDown('overview');">Slide Down</button>
       <!-- A carousel that holds and displays the tracked items, users get to navigate and interact with these items -->
-      <div class="glide">
-        <div data-glide-el="track" class="glide__track">
-          <ul class="glide__slides">
-            <li class="glide__slide"></li>
-            <li class="glide__slide"></li>
-            <li class="glide__slide"></li>
+      <div class="splide" role="group" aria-label="Splide Basic HTML Example">
+        <div class="splide__track">
+          <ul class="splide__list">
+            <li class="splide__slide">Slide 01</li>
+            <li class="splide__slide">Slide 02</li>
+            <li class="splide__slide">Slide 03</li>
           </ul>
         </div>
       </div>
@@ -88,10 +87,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
   <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
   <!-- image carousel library -->
-  <script src="node_modules/@glidejs/glide/dist/glide.min.js"></script>
-  <script>
-    new Glide('.glide').mount()
-  </script>
+  
   <script src="script.js"></script>
 </body>
 
