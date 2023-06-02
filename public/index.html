@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>&#10032;Cinephile’s Attic</title>
   <link href="style.css" rel="stylesheet" />
-  <!-- Link to the file hosted on your server, -->
+  <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script><!-- style sheet for splide.js that link to the file hosted on the server -->
   <link rel="stylesheet" href="splide.min.css">
   <link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" /><!-- stylesheet for tagify.js multiple selections-->
 </head>
@@ -69,15 +69,14 @@
     <!-- Overview sections that keep track of all film entries -->
     <div id="overview">
       <!-- buttons that make this sections slide up/down when needed, refer to the code from https://codepen.io/NoName84/pen/aNbyyz -->
-      <button id='slideUp' onclick="slideUp('overview');">Slide Up</button>
-      <button id='slideDown' onclick="slideDown('overview');">Slide Down</button>
+      <div id="slideButton">
+        <button id='slideUp' onclick="slideUp('overview');">Slide Up</button>
+        <button id='slideDown' onclick="slideDown('overview');">Slide Down</button>
+      </div>
       <!-- A carousel that holds and displays the tracked items, users get to navigate and interact with these items -->
       <div class="splide" role="group" aria-label="Splide Basic HTML Example">
         <div class="splide__track">
           <ul class="splide__list">
-            <li class="splide__slide">Slide 01</li>
-            <li class="splide__slide">Slide 02</li>
-            <li class="splide__slide">Slide 03</li>
           </ul>
         </div>
       </div>
@@ -86,8 +85,10 @@
   <!-- multiple selection tags library -->
   <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
   <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
-  <!-- image carousel library -->
-  
+  <!-- splide.js image carousel library -->
+  <script>
+    new Splide( '.splide' ).mount();
+  </script>
   <script src="script.js"></script>
 </body>
 

@@ -19,7 +19,7 @@ html {
     position:relative;
     display: grid;
     grid-template-columns: 0.8fr 1.4fr 0.8fr;
-    grid-template-rows: 0.2fr 2.4fr 0.4fr;
+    grid-template-rows: 0.2fr 2.3fr 0.5fr;
     gap: 0px 0px;
     grid-auto-flow: row;
     grid-template-areas:
@@ -268,22 +268,27 @@ textarea:focus {
 /* overview sections placement and style */
 #overview {
     grid-area: nav;
-    display: flex;
-    justify-content: center;
-    align-items:flex-start;
     background:#000000;
     border-radius: 25px 25px 0 0;
     margin: auto;/* horizontally center the overview section*/
     width: 1400px;
-    transform: translateY(470px);
+    transform: translateY(-140%);
     z-index: 2;
 }
-/* style and place for interactive buttons used to slide the overview section up and down */
+
+/* slide buttons placement */
+#slideButton {
+    display: flex;
+    justify-content: center;
+}
+
+/* style and position for interactive buttons used to slide the overview section up and down */
 #slideUp, #slideDown{
     border-radius: 15px;
     width: 9%;
     height: 20%;
     margin-top: 15px;
+    margin: 10px;
     outline: solid 2px #ffffff;
     border: none;
     background-color: #E2BF77;
@@ -293,8 +298,7 @@ textarea:focus {
 }
 
 #slideUp {
-    margin-left: 50px;
-    margin-right: 20px;
+    margin-left: 15px;
 }
 
 /* hover effect */

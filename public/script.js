@@ -60,7 +60,7 @@ function displayFilms() {
     if (localFilms !== null) {
         //align image to the first selected genre of the film item
         localFilms.forEach(function(film) {
-            let filmImage = './images/thumbnails/action.png';
+            let filmImage = null;
             switch (film.genres[0]) {
                 case 'Action':
                     filmImage = './images/thumbnails/action.png'
@@ -101,12 +101,15 @@ function displayFilms() {
                 case 'Western':
                     filmImage = './images/thumbnails/western.png'
                     break;
+                default:
+                    filmImage = './images/thumbnails/western.png'
+                    break;
             }
             //Create items for the DOM and add to the display list
             let item = document.createElement('li');
             item.setAttribute('data-id', film.id);//assign id to the item so it can be identified and deleted
-            item.setAttribute('class', 'glide__slides');//set the class name so it can be styled by glide.js
-            item.innerHTML = `<h2>${film.genres}</h2><h2>${film.rating}</h2><img src='${filmImage}'/><h1>${film.name}</h1><h2>Directed by: <strong>${film.directors}</strong></h2>
+            item.setAttribute('class', 'splide__slide');//set the class name so it can be styled by glide.js
+            item.innerHTML = `<h2>${film.genres}</h2><h2>${film.rating}</h2><img src='${filmImage}' width='170' height='250'/><h1>${film.name}</h1><h2>Directed by: <strong>${film.directors}</strong></h2>
             <h2>Fave Character(s): <strong>${film.characters}</strong></h2><p class='review'>${film.review}</p><p class='date'>${film.date}</p>`;
             filmlist.appendChild(item);
 
@@ -168,11 +171,11 @@ displayFilms();
 function slideUp(el) {
     var elem = document.getElementById(el);
     elem.style.transition = 'all 1s ease-in-out';
-    elem.style.transform = 'translateY(-190%)';//vertically upward
+    elem.style.transform = 'translateY(-245%)';//vertically upward
 }
 
 function slideDown(el) {
     var elem = document.getElementById(el);
     elem.style.transition = 'all 1s ease-in-out';
-    elem.style.transform = 'translateY(500px)';//vertically downward
+    elem.style.transform = 'translateY(-140%)';//vertically downward
 }

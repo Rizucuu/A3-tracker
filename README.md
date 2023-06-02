@@ -23,7 +23,8 @@ Mockup(left) and Prototype(right)
 ### Iterations
 ### Improvements
 ### Lessons learned & Best practices
-* I attempted to utilize the IMDb API to locate the exact movie poster for the thumbnail image. However, it appears that all the available APIs require payment for permission to use. Thus, I chose to use preset images that align with the film's genre instead.
+* I attempted to utilize the IMDb API to locate the exact movie poster for the thumbnail image. However, it appears that all the available APIs require payment for permission to use. Thus, I chose to use preset images based on film genres instead.
+* I attempted to use glide.js to build an image carousel for user inputs, but it turned out to be incompatible with the software stack my prototype is using. As a result, my app was not functioning properly and a lot of errors were appearing in the console. However, I was able to resolve this issue by switching to splide.js, a similar library that works perfectly with my code. I realized that it's important to be flexible and open to different approaches when one method is not effective, or you’ll just end up wasting more time.
 ## Application Configuration:
 ### Screen dimensions and resolutions best for viewing the application
 **Dimensions** (width x depth): 13-inch Macbook (30.41 x 21.24 cm)
@@ -34,9 +35,9 @@ Mockup(left) and Prototype(right)
 3.
 
 ## Deployment Procedures:
-Download Glide.js for carousel effects with
+Download splide.js for carousel effects with
 ```
-npm install @glidejs/glide
+npm install @splidejs/splide
 ```
 
 To start the server:
@@ -46,8 +47,8 @@ npm run start
 
 ## Guidance for future developers:
 ## References
-jedrzejchalubek. (2022). glide.js [JS Library]. 
-https://github.com/glidejs/glide
+jedrzejchalubek. (2022). splide.js [JS Library]. 
+https://github.com/Splidejs/splide
 
 Yair Even Or. (2023). tagify [JS Library]. 
 https://github.com/yairEO/tagify
@@ -58,6 +59,18 @@ https://www.freepik.com/free-photo/layout-popcorn-with-cinema-objects_2317675.ht
 
 Gamer Land. (n.d.). *Mafia 2 Definitive Edition 4k* [image]. Pinterest. 
 https://www.pinterest.com.au/pin/446560119306578111/ 
+
+bitchlocks. (2016). Bates Motel [Image]. Tumblr.
+https://www.tumblr.com/bitchlocks/149530794684/bates-motel-lockscreens-like-or-reblog-if
+
+Peakpx. (n.d.). Get out [image]. Peakpx.
+https://www.peakpx.com/en/hd-wallpaper-desktop-pvtpa 
+
+Tunstall, T. (2021). American Underdog [Image]. IrishFilmCritic.
+https://www.irishfilmcritic.com/movie-review-true-life-story-celebrates-kurt-warners-improbable-rise-to-greatness-in-american-underdog/ 
+
+Wallpapers-Clan. (2023). Cowboy Brown Art Wallpapers [Image]. Wallpapers-Clan.
+https://wallpapers-clan.com/wallpapers/cowboy-brown-art/ 
 
 WallpaperFlare. (n.d.). *HD wzllpaper: Dunkirk* [image]. Wallpaper Flare.
 https://www.wallpaperflare.com/action-drama-2017-4k-dunkirk-christopher-nolan-history-wallpaper-qrryk
