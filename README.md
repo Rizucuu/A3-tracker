@@ -15,6 +15,8 @@ Mockup(left) and Prototype(right)
 
 ### Development process
 ### Iterations
+#### Iteration 1:
+Added a button to close the form, in case the user no longer want to fill out the form.
 ### Improvements
 ### Lessons learned & Best practices
 * I attempted to use a GitHub library to create a dropdown list that allows for multiple genre selections, but its documentation is vague and incomplete, without any explanations on how it works and the output it produces. Consequently, I couldn’t retrieve all of the selected options to be used in JS functions. I then switched to the recommended tagify library, which gives clear and detailed instructions throughout, and I was able to track and utilize all the selected options. Through this experience, I have come to understand the significance of utilizing a thoroughly documented library and the benefits of keeping track of the development process.

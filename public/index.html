@@ -63,6 +63,8 @@
           <div class="form-row">
             <input id='submit' style='font-size: 20px; font-weight: bold;' type="submit" value="SAVE"/>
           </div>
+        <!-- a button to close the form without filling out the input fields-->
+          <center><button id="close" onclick="hidePop()">CLOSE</button></center>
         </form>
       </div> 
     </div>
@@ -70,16 +72,16 @@
     <div id="overview">
       <!-- buttons that make this sections slide up/down when needed, refer to the code from https://codepen.io/NoName84/pen/aNbyyz -->
       <div id="slideButton">
-        <button id='slideUp' onclick="slideUp('overview');">Slide Up</button>
-        <button id='slideDown' onclick="slideDown('overview');">Slide Down</button>
+        <button id='slideUp' onclick="slideUp('overview');">Overview &#9650</button>
+        <button id='slideDown' onclick="slideDown('overview');">Overview &#9660</button>
       </div>
       <!-- A carousel that holds and displays the tracked items, users get to navigate and interact with these items -->
-      <div class="splide" role="group" aria-label="Splide Basic HTML Example">
+      <section class="splide" aria-label="Splide Basic HTML Example">
         <div class="splide__track">
           <ul class="splide__list">
           </ul>
         </div>
-      </div>
+      </section>
     </div> 
   </main>
   <!-- multiple selection tags library -->
@@ -87,7 +89,29 @@
   <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
   <!-- splide.js image carousel library -->
   <script>
-    new Splide( '.splide' ).mount();
+    new Splide( '.splide', {
+      type: 'slide',
+      drag: 'free',//flexible drag
+      snap: true,//snap to the closest slide when user stopped dragging
+      rewind: true,
+      rewindByDrag: true, //rewind (return to the previous items) the carousel by dragging
+      perPage: 5, //number of slides to show in a page
+      perMove: 1, //move 1 slide at a time
+      speed: 500, //take 500ms to jump to another page
+      start: -1, //start at the latest film entry
+      arrows: true,
+      padding: '20%',
+      dragMinThreshold: {//required distance to start moving the carousel
+        mouse: 5,//desktop
+        touch: 10,//mobile
+      },
+      mediaQuery: 'min',//decrease number of slides displayed in carousel when screen size reduced
+      breakpoints: {
+        390: {
+          perpage: 3,
+        }
+      }
+    } ).mount();
   </script>
   <script src="script.js"></script>
 </body>

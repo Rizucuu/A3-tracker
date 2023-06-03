@@ -40,7 +40,21 @@ html {
 .form { 
     position: absolute; /* placed relative to the logo*/
     grid-area: form; 
+    margin-top: -14%;
     z-index: 1;
+}
+
+/* style the close form button */
+#close {
+    width: 20%;
+    background-color: #E2BF77;
+    border-radius: 15px;
+    cursor: pointer;
+    border: solid 0.5px #ffffff;
+}
+
+#close:hover {
+    background-color: #ffffff;
 }
 
 /* set the position and style of form labels and fields*/
@@ -272,7 +286,8 @@ textarea:focus {
     border-radius: 25px 25px 0 0;
     margin: auto;/* horizontally center the overview section*/
     width: 1400px;
-    transform: translateY(-140%);
+    height: 830px;
+    transform: translateY(-158%);
     z-index: 2;
 }
 
@@ -310,4 +325,31 @@ textarea:focus {
 #slideDown:hover {
     background-color: #ffffff;
     outline:#E2BF77;
+}
+
+/* style for text in overview section*/
+/* genre section */
+.filmGenre {
+    display: inline-block;
+    background-color: #E2BF77;
+    border-radius: 15px;
+    padding: 2px 5px 2px 5px;
+    margin: 30px 0 0 0;
+    font-size: 20px;
+    color: #000000;
+}
+
+h2 {
+    color:#E2BF77;
+    font-family:'Chakra Petch', sans-serif;
+}
+
+/* review text box */
+.reviews {
+    display: inline-block;
+    background-color:#E2BF77;
+}
+/* date text */
+.date {
+    color:#E2BF77;
 }

@@ -2,11 +2,11 @@
 const tagsInput = document.getElementById("tags");
 const tagify = new Tagify(tagsInput, {
     whitelist: ['Science Fiction', "Crime", "Drama", "Action", "Fantasy", "Comedy", "Horror", "Romance", "Sports", "Thriller", "Mystery", "War", "Western"], // whitelist of all available film genres
-    maxTags: 13,
+    maxTags: 3, // macimum number of tags that can be choosed at a time
     dropdown: {
       enabled: 0, // Enable the dropdown
       classname: "tags-drop", //classname for the dropdown list
-      maxItems: 13, // Maximum number of suggestions to display
+      maxItems: 13, // Maximum number of suggestions to display, display all 13 genres
       closeOnSelect: false // Keep the dropdown open after selecting a suggestion
     }
 });
@@ -101,16 +101,17 @@ function displayFilms() {
                 case 'Western':
                     filmImage = './images/thumbnails/western.png'
                     break;
+                //default thumbnail image if no valid genre was selected
                 default:
-                    filmImage = './images/thumbnails/western.png'
+                    filmImage = './assets/background.png'
                     break;
             }
             //Create items for the DOM and add to the display list
             let item = document.createElement('li');
             item.setAttribute('data-id', film.id);//assign id to the item so it can be identified and deleted
             item.setAttribute('class', 'splide__slide');//set the class name so it can be styled by glide.js
-            item.innerHTML = `<h2>${film.genres}</h2><h2>${film.rating}</h2><img src='${filmImage}' width='170' height='250'/><h1>${film.name}</h1><h2>Directed by: <strong>${film.directors}</strong></h2>
-            <h2>Fave Character(s): <strong>${film.characters}</strong></h2><p class='review'>${film.review}</p><p class='date'>${film.date}</p>`;
+            item.innerHTML = `<center><h2 class='filmGenre'>${film.genres}</h2><h2>${film.rating} / 10 </h2><img src='${filmImage}' width='210' height='290'/><h1>${film.name}</h1><h2>Directed by: <strong>${film.directors}</strong></h2>
+            <h2>Fave Character(s): <strong>${film.characters}</strong></h2><p class='reviews'>${film.review}</p><p class='date'>${film.date}</p>`;
             filmlist.appendChild(item);
 
             //Clear the value of the input once the task has been added to the page
@@ -130,7 +131,7 @@ function displayFilms() {
                     }
                 })
                 //Update localStorage with the newly spliced array
-                localStorage.setItem('tasks', JSON.stringify(localFilms));
+                localStorage.setItem('films', JSON.stringify(localFilms));
                 //remove the film item from the page when delete button is clicked
                 item.remove();
             })
@@ -177,5 +178,10 @@ function slideUp(el) {
 function slideDown(el) {
     var elem = document.getElementById(el);
     elem.style.transition = 'all 1s ease-in-out';
-    elem.style.transform = 'translateY(-140%)';//vertically downward
+    elem.style.transform = 'translateY(-158%)';//vertically downward
+}
+
+function hidePop() {
+    document.getElementById('input').style.display = 'none';//hide the form
+    document.body.style.backgroundColor = 'rgb(0,0,0,0)';
 }
