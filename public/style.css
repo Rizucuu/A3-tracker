@@ -7,7 +7,9 @@ html, body {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
+    overflow: hidden; /* clip the overflow nav(overview) section, so it can only be accessed through slide up/down transition */
 }
+
 /* background image style */
 html {
     background: url(assets/background.png);
@@ -151,10 +153,10 @@ input[type='text']:focus {
 .form-area {
     display: none;
     position: fixed;
-    top: 12%;
+    top: 11%;
     left: 22%;
     width: 57%;
-    height: 72%;
+    height: 74%;
     background-color: #000000;
     border-radius: 25px;
     outline: solid;
@@ -171,7 +173,7 @@ input[type='text']:focus {
     display: inline-block;
     margin-left: auto;/* keep the form rows in the middle */
     margin-right: auto;
-    margin-top: 5px;
+    margin-top: -5px;
     text-align: left;
 }
 
@@ -229,14 +231,14 @@ border-color: black;
 
 /* review field style */
 textarea {
-    width: 100%;
+    width: 98%;
     font-family: 'Chakra Petch', sans-serif;
-    font-size: 15px;
+    font-size: 17px;
     outline: none;
     border: solid 0.5px #ffffff;
     border-radius: 10px;
     background-color:#E2BF77;
-    padding: 0 3px 0 3px;
+    padding: 0 12px 0 12px;
 }
 
 textarea:focus {
@@ -334,22 +336,64 @@ textarea:focus {
     background-color: #E2BF77;
     border-radius: 15px;
     padding: 2px 5px 2px 5px;
-    margin: 30px 0 0 0;
+    margin: 20px 0 0 0;
     font-size: 20px;
     color: #000000;
 }
 
+/* film title */
 h2 {
     color:#E2BF77;
     font-family:'Chakra Petch', sans-serif;
+    margin: 10px 0 10px 0;
+}
+
+/* director & character names */
+.names {
+    color:#E2BF77;
+    font-family:'Chakra Petch', sans-serif;
+    font-size: 17px;
+    margin: 10px 0 10px 0;
 }
 
 /* review text box */
 .reviews {
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 255px;
+    height: 130px;
+    border-radius: 10px;
+    border: solid 2px #ffffff;
+    font-family:'Chakra Petch', sans-serif;
     background-color:#E2BF77;
+    padding: 4px;
+    overflow: scroll;
 }
 /* date text */
 .date {
     color:#E2BF77;
+    font-family:'Chakra Petch', sans-serif;
+    margin: 5px 0 5px 0;
 }
+/* every item in the overview list */
+li {
+    padding: 0 24px 0 24px;
+}
+/* delete button */
+.delete {
+    border-radius: 15px;
+    border: solid 2px #ffffff;
+    background-color: #E2BF77;
+    margin-left: 5em;
+    cursor: pointer;
+    width: 50%;
+    transition-duration: 0.5s;
+}
+
+.delete:hover {
+    background-color: #ffffff;
+}
+
+/* Make the page layout responsive to smaller screen size */
+@media only screen and (max-width: 500px) {}

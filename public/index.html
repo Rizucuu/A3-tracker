@@ -32,17 +32,17 @@
       <!-- text input: directors -->
           <div class="form-row">
             <label for="director">Director(s)</label>
-            <input type="text" name="director" id="director" placeholder= "use '/' to separate names" required="true">
+            <input type="text" name="director" id="director" placeholder= "Press 'return/enter' when finished typing a name" required="true">
           </div>
       <!-- text input: favorite characters -->
           <div class="form-row">
             <label for="character">Favorite Character(s)</label>
-            <input type="text" name="character" id="character" placeholder= "use '/' to separate names" required="true">
+            <input type="text" name="character" id="character" placeholder= "Press 'return/enter' when finished typing a name" required="true">
           </div>
       <!-- multiple selection: film genres -->
           <div class="form-row">
             <label for="tags">Genre(s)</label>
-            <input type="text" name="tags" id="tags" placeholder="type or select film genre(s)" required="true">
+            <input type="text" name="tags" id="tags" placeholder="Type or Select film genre(s)" required="true">
           </div>
       <!-- range input: film rating 0 to 10 -->
           <div class="form-row">
@@ -56,8 +56,8 @@
       <!-- textarea: film review -->
           <div class="form-row">
             <label for="review">Review</label>
-            <!-- only review is not required to be filled, it has a word limit of approximately 60-100 words -->
-            <textarea rows="4" name="review" id="review" maxlength="400"></textarea>
+            <!-- it has a word limit of approximately 60-100 words -->
+            <textarea rows="4" name="review" id="review" maxlength="400" placeholder="Comment in a sentence" required="true"></textarea>
           </div>
        <!-- button: save the input -->
           <div class="form-row">
@@ -76,12 +76,12 @@
         <button id='slideDown' onclick="slideDown('overview');">Overview &#9660</button>
       </div>
       <!-- A carousel that holds and displays the tracked items, users get to navigate and interact with these items -->
-      <section class="splide" aria-label="Splide Basic HTML Example">
+      <div class="splide" aria-label="Splide Basic HTML Example">
         <div class="splide__track">
           <ul class="splide__list">
           </ul>
         </div>
-      </section>
+      </div>
     </div> 
   </main>
   <!-- multiple selection tags library -->
@@ -90,17 +90,17 @@
   <!-- splide.js image carousel library -->
   <script>
     new Splide( '.splide', {
-      type: 'slide',
+      //type: 'slide',
       drag: 'free',//flexible drag
-      snap: true,//snap to the closest slide when user stopped dragging
+      //snap: true,//snap to the closest slide when user stopped dragging
       rewind: true,
       rewindByDrag: true, //rewind (return to the previous items) the carousel by dragging
-      perPage: 5, //number of slides to show in a page
-      perMove: 1, //move 1 slide at a time
+      perPage: 4, //number of slides to show in a page
+      //perMove: 1, //move 1 slide at a time
       speed: 500, //take 500ms to jump to another page
-      start: -1, //start at the latest film entry
+      //start: -1, //start at the latest film entry
       arrows: true,
-      padding: '20%',
+      padding: '5%',
       dragMinThreshold: {//required distance to start moving the carousel
         mouse: 5,//desktop
         touch: 10,//mobile

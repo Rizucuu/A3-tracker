@@ -1,7 +1,9 @@
+//Create multiple input fields for genres, directors, and characters
 //get the input from multiple genres selection tags
 const tagsInput = document.getElementById("tags");
 const tagify = new Tagify(tagsInput, {
     whitelist: ['Science Fiction', "Crime", "Drama", "Action", "Fantasy", "Comedy", "Horror", "Romance", "Sports", "Thriller", "Mystery", "War", "Western"], // whitelist of all available film genres
+    enforceWhitelist: true, //user input must conform to the spelling of whitelist tags
     maxTags: 3, // macimum number of tags that can be choosed at a time
     dropdown: {
       enabled: 0, // Enable the dropdown
@@ -9,6 +11,16 @@ const tagify = new Tagify(tagsInput, {
       maxItems: 13, // Maximum number of suggestions to display, display all 13 genres
       closeOnSelect: false // Keep the dropdown open after selecting a suggestion
     }
+});
+//director tags
+const dInput = document.getElementById("director");
+const input = new Tagify(dInput, {
+    originalInputValueFormat: valuesArr => valuesArr.map(item => item.value).join(', ')//convert the array values into a string with a specific delimiter 
+});
+//character tags
+const cInput = document.getElementById("character");
+const cinput = new Tagify(cInput, {
+    originalInputValueFormat: valuesArr => valuesArr.map(item => item.value).join(', ')
 });
 
 //Create a function to add the new film entry to the array
@@ -22,7 +34,7 @@ function addFilm(name, directors, characters, genres, rating, review) {
         rating,
         review,
         id: Date.now(),//automatically generating an unique identifier for the new entry
-        date: new Date().toISOString(),//automatically record the date when the entry is added
+        date: new Date().toLocaleDateString('en-US', {weekday: 'long', year: 'numeric', month: 'long', day:'numeric'}),//automatically record the date when the entry is added, format the output so it also gives the day of the week along with the exact date
     }
     console.log(genres);
 
@@ -61,44 +73,45 @@ function displayFilms() {
         //align image to the first selected genre of the film item
         localFilms.forEach(function(film) {
             let filmImage = null;
-            switch (film.genres[0]) {
-                case 'Action':
+            //convert the genre string to lowercase letters, so that capitalized (e.g. 'Action') and lowercased (e.g.'action') user input can be recognized
+            switch (film.genres[0].toLowerCase()) {
+                case 'action':
                     filmImage = './images/thumbnails/action.png'
                     break;
-                case 'Comedy':
+                case 'comedy':
                     filmImage = './images/thumbnails/comedy.png'
                     break;
-                case 'Crime':
+                case 'crime':
                     filmImage = './images/thumbnails/crime.png'
                     break;
-                case 'Drama':
+                case 'drama':
                     filmImage = './images/thumbnails/drama.png'
                     break;
-                case 'Fantasy':
+                case 'fantasy':
                     filmImage = './images/thumbnails/fantasy.png'
                     break;
-                case 'Horror':
+                case 'horror':
                     filmImage = './images/thumbnails/horror.png'
                     break;
-                case 'Mystery':
+                case 'mystery':
                     filmImage = './images/thumbnails/mystery.png'
                     break;
-                case 'Romance':
+                case 'romance':
                     filmImage = './images/thumbnails/romance.png'
                     break;
-                case 'Science Fiction':
+                case 'science fiction':
                     filmImage = './images/thumbnails/scifi.png'
                     break;
-                case 'Sports':
+                case 'sports':
                     filmImage = './images/thumbnails/sport.png'
                     break;
-                case 'Thriller':
+                case 'thriller':
                     filmImage = './images/thumbnails/Thriller.png'
                     break;
-                case 'War':
+                case 'war':
                     filmImage = './images/thumbnails/war.png'
                     break;
-                case 'Western':
+                case 'western':
                     filmImage = './images/thumbnails/western.png'
                     break;
                 //default thumbnail image if no valid genre was selected
@@ -110,8 +123,8 @@ function displayFilms() {
             let item = document.createElement('li');
             item.setAttribute('data-id', film.id);//assign id to the item so it can be identified and deleted
             item.setAttribute('class', 'splide__slide');//set the class name so it can be styled by glide.js
-            item.innerHTML = `<center><h2 class='filmGenre'>${film.genres}</h2><h2>${film.rating} / 10 </h2><img src='${filmImage}' width='210' height='290'/><h1>${film.name}</h1><h2>Directed by: <strong>${film.directors}</strong></h2>
-            <h2>Fave Character(s): <strong>${film.characters}</strong></h2><p class='reviews'>${film.review}</p><p class='date'>${film.date}</p>`;
+            item.innerHTML = `<center><h2 class='filmGenre'>${film.genres}</h2><h2>${film.rating} / 10 </h2><img src='${filmImage}' width='210' height='290' class='image'/><h2 style='font-size: 25px;'>${film.name}</h2><p class='names'>Directed by: <strong>${film.directors}</strong></p>
+            <p class='names'>Fave Character(s): <strong>${film.characters}</strong></p><div class='reviews'><p style='text-align=center;'>"${film.review}"</p></div><p class='date'>${film.date}</p>`;
             filmlist.appendChild(item);
 
             //Clear the value of the input once the task has been added to the page
@@ -120,6 +133,7 @@ function displayFilms() {
             //Setup delete button DOM elements
             let delButton = document.createElement('button');
             let delButtonText = document.createTextNode('Delete');
+            delButton.setAttribute('class','delete'); //give it a class attribute to be used in css
             delButton.appendChild(delButtonText);
             item.appendChild(delButton); //Adds a delete button to every film entry
 
