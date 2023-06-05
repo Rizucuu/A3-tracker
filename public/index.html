@@ -7,15 +7,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>&#10032;Cinephile’s Attic</title>
   <link href="style.css" rel="stylesheet" />
-  <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script><!-- style sheet for splide.js that link to the file hosted on the server -->
-  <link rel="stylesheet" href="splide.min.css">
   <link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" /><!-- stylesheet for tagify.js multiple selections-->
 </head>
 
 <body>
   <main class="container">
     <header class="logo">
-      <center><img style='width: 30%; height: auto' src="assets/logo.png" alt="app logo"></center>
+      <center><img src="assets/logo.png" alt="app logo"></center>
     </header>
     <!-- popup form, refer to code from https://www.w3schools.com/howto/howto_js_popup_form.asp -->
     <div class="form">
@@ -76,43 +74,16 @@
         <button id='slideDown' onclick="slideDown('overview');">Overview &#9660</button>
       </div>
       <!-- A carousel that holds and displays the tracked items, users get to navigate and interact with these items -->
-      <div class="splide" aria-label="Splide Basic HTML Example">
-        <div class="splide__track">
-          <ul class="splide__list">
-          </ul>
-        </div>
+      <div id="list-container">
+        <ul id="filmlist">
+        </ul>
       </div>
     </div> 
   </main>
   <!-- multiple selection tags library -->
   <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
   <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
-  <!-- splide.js image carousel library -->
-  <script>
-    new Splide( '.splide', {
-      //type: 'slide',
-      drag: 'free',//flexible drag
-      //snap: true,//snap to the closest slide when user stopped dragging
-      rewind: true,
-      rewindByDrag: true, //rewind (return to the previous items) the carousel by dragging
-      perPage: 4, //number of slides to show in a page
-      //perMove: 1, //move 1 slide at a time
-      speed: 500, //take 500ms to jump to another page
-      //start: -1, //start at the latest film entry
-      arrows: true,
-      padding: '5%',
-      dragMinThreshold: {//required distance to start moving the carousel
-        mouse: 5,//desktop
-        touch: 10,//mobile
-      },
-      mediaQuery: 'min',//decrease number of slides displayed in carousel when screen size reduced
-      breakpoints: {
-        390: {
-          perpage: 3,
-        }
-      }
-    } ).mount();
-  </script>
+  <!-- main JS script -->
   <script src="script.js"></script>
 </body>
 

@@ -1,10 +1,8 @@
 # Development Documentation
 ## Home page
-![Desktop Home page comparison]
-(./assets/homepage.png)
+![Desktop Home page comparison](public/assets/homepage.png)
 Mockup(Up) and Prototype(down)
-![Mobile Home page comparison]
-(url)
+![Mobile Home page comparison](url)
 Mockup(left) and Prototype(right)
 ### Development process
 1. Implemented CSS grid to create a layout for the home page, also embeded logo, button, and background images and adjusted their appearance and position.
@@ -13,6 +11,7 @@ Mockup(left) and Prototype(right)
 ### Iterations
 * The overview section was originally placed at the bottom of the home page and could only be seen by scrolling down. However, to make it more user-friendly and convenient, a slide up/down transition was added so that users no longer have to scroll the page.
 ### Improvements
+* To make it clear for users whether they have activated the button or not, hover/click transitions were added to highlight the ongoing interaction.
 * To improve user experience, a hover effect was added to the "What's on Today" button to indicate its interactivity. This effect expands the button when the user's cursor hovers over it, making it more visible on big (desktop) screens.
 ### Lessons learned & Best practices
 * I originally intended to place the overview section above the homepage when the former expands. However, the grid layout used on the homepage caused it to be pushed to the side by the overview section. I tried to make them overlap by applying z-index to both sections, but this didn't work. I then learned from html reference page that z-index only works on elements that have a position setting, so I applied this to all sections, which messed up the placement of elements. After several attempts, I used relative and absolute positioning and flexbox to fix it.
@@ -34,6 +33,7 @@ dropdown list to tag selection fields, showing all available options in an intui
 #### Iteration 3:
 Added a button to close the form, in case the user no longer want to fill out the form.
 ### Improvements
+focus outline input field
 ### Lessons learned & Best practices
 * I attempted to use a GitHub library to create a dropdown list that allows for multiple genre selections, but its documentation is vague and incomplete, without any explanations on how it works and the output it produces. Consequently, I couldn’t retrieve all of the selected options to be used in JS functions. I then switched to the recommended tagify library, which gives clear and detailed instructions throughout, and I was able to track and utilize all the selected options. Through this experience, I have come to understand the significance of utilizing a thoroughly documented library and the benefits of keeping track of the development process.
 ## Overview
@@ -42,9 +42,11 @@ Added a button to close the form, in case the user no longer want to fill out th
 ### Improvements
 * Inspired by one sentence film review on Rotten Tomatoes, show one's opinion without being troublesome to fill up
 * highlight interactable elements with white borders
+* added click and drag scrolling for mobile device 
 ### Lessons learned & Best practices
 * I attempted to utilize the IMDb API to locate the exact movie poster for the thumbnail image. However, it appears that all the available APIs require payment for permission to use. Thus, I chose to use preset images based on film genres instead.
 * I attempted to use glide.js to build an image carousel for user inputs, but it turned out to be incompatible with the software stack my prototype is using. As a result, my app was not functioning properly and a lot of errors were appearing in the console. However, I was able to resolve this issue by switching to splide.js, a similar library that works perfectly with my code. I realized that it's important to be flexible and open to different approaches when one method is not effective, or you’ll just end up wasting more time.
+* I encountered a lot of problems trying to create an carousel with the Splide.js library. The main issue was that in my case, the target items are meant to be added by the user in real-time, instead of being set beforehand (as is typical for applying an carousel). Consequently, I need to reload the page whenever a new item is added to make sure the DOM centent has been loaded and reconstruct the Splide carousel based on the new input. I also can't use the loop mode as it prevents items being properly deleted. The library is set to retain a copy of the minimum amount of items required to create a loop, and continues to display them even after deletion. These restrictions make it impossible for me to create a single page architecture that requires no page reload. Hence, I opted to construct a simple list presentation instead.
 ## Application Configuration:
 ### Screen dimensions and resolutions best for viewing the application
 **Dimensions** (width x depth): 13-inch Macbook (30.41 x 21.24 cm) (Google Chrome)
@@ -55,10 +57,6 @@ Added a button to close the form, in case the user no longer want to fill out th
 3.
 
 ## Deployment Procedures:
-Download splide.js for carousel effects with
-```
-npm install @splidejs/splide
-```
 
 To start the server:
 ```
@@ -67,8 +65,8 @@ npm run start
 
 ## Guidance for future developers:
 ### Architecture and Technology Stack:
-a. The current application (Cinephile's Attic) is built using a single page application (SPA) architecture. This approach allows for a seamless user experience by dynamically updating content without page reloads. This application is responsive for both mobile and desktop devices.
-b. The technology stack includes HTML, CSS, and JavaScript for the front-end, along with a backend code for a minimal web server. This application implement local storage for keeping track of data in users' browsers, and persistent access between sessions.
+* The current application (Cinephile's Attic) is built using a single page application (SPA) architecture. This approach allows for a seamless user experience by dynamically updating content without page reloads. This application is responsive for both mobile and desktop devices.
+* The technology stack includes HTML, CSS, and JavaScript for the front-end, along with a backend code for a minimal web server. This application implement local storage for keeping track of data in users' browsers, and persistent access between sessions.
 ### General Purpose of Cinephile's Attic:
 * Allowing users to create a personalized watchlist of movies they’ve watched, which includes viewing history, film ratings and reviews.
 * Giving users the ability to rate and review movies they've watched.
@@ -89,20 +87,20 @@ Implement lazy loading techniques to improve initial page load times, especially
 #### Mobile Responsiveness:
 Consider building native mobile apps (iOS and Android) using frameworks like React Native or Flutter to provide a dedicated mobile experience.
 #### Data Analytics and Insights:
-a. Explore opportunities to leverage user data to provide valuable insights. Consider implementing analytics tools to track user engagement, popular movies, user preferences, and other relevant metrics.
-b. Provide visualizations and statistics that allow users to track their movie consumption patterns, genres they prefer, and average ratings given.
+* Explore opportunities to leverage user data to provide valuable insights. Consider implementing analytics tools to track user engagement, popular movies, user preferences, and other relevant metrics.
+* Provide visualizations and statistics that allow users to track their movie consumption patterns, genres they prefer, and average ratings given.
 #### Social Features and Community:
-a. Consider adding social features that allow users to connect, follow each other, and share their movie habits or recommendations.
-b. Implement features like comments, likes, and user reviews to facilitate user interactions and build an engaged community.
+* Consider adding social features that allow users to connect, follow each other, and share their movie habits or recommendations.
+* Implement features like comments, likes, and user reviews to facilitate user interactions and build an engaged community.
 ## References
 CODEPEN. (n.d.). *Javascript slideUp slideDown Animation*.
 https://codepen.io/NoName84/pen/aNbyyz
 
+Daniel, L. (n.d.). *Horizontal Click and Drag Scrolling with JS*.
+https://codepen.io/thenutz/pen/VwYeYEE
+
 Ellis, D. (2022). *How to create a Range Slide in HTML + CSS*.
 https://blog.hubspot.com/website/html-slider
-
-jedrzejchalubek. (2022). splide.js [JS Library]. 
-https://github.com/Splidejs/splide
 
 W3 Schools. (2023). *W3Schools How To -- Popup Form*.
 https://www.w3schools.com/howto/howto_js_popup_form.asp

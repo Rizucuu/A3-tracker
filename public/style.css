@@ -37,6 +37,11 @@ html {
     grid-area: logo; 
     z-index: 1;
 }
+/* adjust the size of the logo */
+.logo img{
+    width: 30%; 
+    height: auto;
+}
 
 /* where to put the input form */
 .form { 
@@ -330,6 +335,21 @@ textarea:focus {
 }
 
 /* style for text in overview section*/
+/* create a horizontal scroll list */
+#list-container {
+    white-space: nowrap; /*display the list content in a single line */
+    overflow-x: scroll;
+}
+
+ul {
+    display: flex;
+    flex-direction: row-reverse; /*display the list in a reverse order, so the latest entry appears at the front*/
+    justify-content: flex-end; /* display the list from the reversed end */
+}
+li {
+    display: inline-block;
+}
+
 /* genre section */
 .filmGenre {
     display: inline-block;
@@ -359,7 +379,7 @@ h2 {
 /* review text box */
 .reviews {
     display: flex;
-    align-items: center;
+    align-items:flex-start;
     justify-content: center;
     width: 255px;
     height: 130px;
@@ -395,5 +415,40 @@ li {
     background-color: #ffffff;
 }
 
+.image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow:-10px -10px #E2BF77;
+    padding: 0;
+    width: 210px;
+    height: 290px;
+    transition: all 0.5s ease-in-out;
+}
+
+.image:hover {
+    box-shadow: 10px 10px #E2BF77;
+}
 /* Make the page layout responsive to smaller screen size */
-@media only screen and (max-width: 500px) {}
+@media only screen and (max-width: 500px) {
+    .container {  
+        position:relative;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 10% 70% 20%;
+        gap: 0px 0px;
+        grid-auto-flow: row;
+        grid-template-areas:
+          "logo"
+          "form"
+          "nav";
+        z-index: 1; /* stack under the overview section*/
+      }
+    .logo {
+        margin-right: 300px;
+    }
+    .logo img {
+        width: 10%;
+
+    }
+}

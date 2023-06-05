@@ -60,7 +60,7 @@ function addFilm(name, directors, characters, genres, rating, review) {
 //Create variables to hold HTML elements using DOM
 const form = document.getElementById('form-container');
 //new variable to hold the carousel list that displays new film items
-const filmlist = document.getElementsByClassName('splide__list')[0];
+const filmlist = document.getElementById('filmlist');
 
 //A function that loops through localStorage to display all the stored film entries
 function displayFilms() {
@@ -122,8 +122,7 @@ function displayFilms() {
             //Create items for the DOM and add to the display list
             let item = document.createElement('li');
             item.setAttribute('data-id', film.id);//assign id to the item so it can be identified and deleted
-            item.setAttribute('class', 'splide__slide');//set the class name so it can be styled by glide.js
-            item.innerHTML = `<center><h2 class='filmGenre'>${film.genres}</h2><h2>${film.rating} / 10 </h2><img src='${filmImage}' width='210' height='290' class='image'/><h2 style='font-size: 25px;'>${film.name}</h2><p class='names'>Directed by: <strong>${film.directors}</strong></p>
+            item.innerHTML = `<center><h2 class='filmGenre'>${film.genres}</h2><h2>${film.rating} / 10 </h2><div class='image'><img src='${filmImage}' width='210' height='290'/></div><h2 style='font-size: 25px;'><u>${film.name}</u></h2><p class='names'>Directed by: <strong>${film.directors}</strong></p>
             <p class='names'>Fave Character(s): <strong>${film.characters}</strong></p><div class='reviews'><p style='text-align=center;'>"${film.review}"</p></div><p class='date'>${film.date}</p>`;
             filmlist.appendChild(item);
 
@@ -199,3 +198,31 @@ function hidePop() {
     document.getElementById('input').style.display = 'none';//hide the form
     document.body.style.backgroundColor = 'rgb(0,0,0,0)';
 }
+
+//Add click and drag scrolling to tracked items, refer to the code from https://codepen.io/thenutz/pen/VwYeYEE
+const slider = document.getElementById('list-container');
+let isDown = false;
+let startX;
+let scrollL;
+//when the user presses the mouse button
+slider.addEventListener('mousedown', (e)=> {
+    isDown = true;
+    startX = e.pageX - slider.offsetLeft; //record the start x position of the filmlist , by subtracting the current offset of the filmlist's upper left coner to the parent (overview) section from the current pointer x coordinate
+    scrollL = slider.scrollLeft; //get the number of pixels the filmlist content is scrolled horizontally at the moment
+});
+//when the user's mouse pointer leaves the filmlist
+slider.addEventListener('mouseleave', () => {
+    isDown = false;
+});
+//when the user releases the mouse button
+slider.addEventListener('mouseup', ()=> {
+    isDown = false;
+});
+//when the user move and drag the filmlist
+slider.addEventListener('mousemove', (e)=>{
+    if(!isDown) return;//when the user is not touching the filmlist, return and do nothing
+    e.preventDefault();
+    const x = e.pageX - slider.offsetLeft;//the x position of the filmlist after click and dragging the filmlist
+    const walk = (x - startX) * 2; //the horizontal displacement distance of the filmlist, times 2 to scroll faster
+    slider.scrollLeft = scrollL-walk;//transport the filmlist by setting its scroll position to the relative horizontal displacement (original scroll position subtract the dragged distance)
+})
