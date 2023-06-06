@@ -36,8 +36,6 @@ function addFilm(name, directors, characters, genres, rating, review) {
         id: Date.now(),//automatically generating an unique identifier for the new entry
         date: new Date().toLocaleDateString('en-US', {weekday: 'long', year: 'numeric', month: 'long', day:'numeric'}),//automatically record the date when the entry is added, format the output so it also gives the day of the week along with the exact date
     }
-    console.log(genres);
-
     //fetching and parse a string from localStorage into js structure
     let localFilms = JSON.parse(localStorage.getItem('films'));
     //if there's nothing in the localStorage, overwrite it with a list containig the current film entry
@@ -46,7 +44,7 @@ function addFilm(name, directors, characters, genres, rating, review) {
     } else {
         //Check if there's already a film with the same ID exited
         if (localFilms.find(element => element.id === film.id)) {
-            console.log('Task ID already exists');//log an error message
+            console.log('Film ID already exists');//log an error message
         } else {
             localFilms.push(film);//otherwise add the new entry to localStorage
         }
@@ -126,7 +124,7 @@ function displayFilms() {
             <p class='names'>Fave Character(s): <strong>${film.characters}</strong></p><div class='reviews'><p style='text-align=center;'>"${film.review}"</p></div><p class='date'>${film.date}</p>`;
             filmlist.appendChild(item);
 
-            //Clear the value of the input once the task has been added to the page
+            //Clear the value of the input once the film entry has been added to the page
             form.reset();
 
             //Setup delete button DOM elements
@@ -175,29 +173,40 @@ form.addEventListener('submit', function (event) {
         form.elements.rating.value,
         form.elements.review.value,
         )
-    console.log(tagsArray);
+
 })
 
 //make sure other film entries will still be shown when the page get refreshed
 displayFilms();
 
+var screenWidth = window.matchMedia("(max-width: 500px)")
 //function that controls the overview section to slide up/down
 function slideUp(el) {
     var elem = document.getElementById(el);
     elem.style.transition = 'all 1s ease-in-out';
-    elem.style.transform = 'translateY(-245%)';//vertically upward
+    //if the screen width decreased, apply less vertical upward translation
+    if (screenWidth.matches) {
+        elem.style.transform = 'translateY(-83%)';//vertically upward
+    } else {
+        elem.style.transform = 'translateY(-245%)';
+    }
 }
 
 function slideDown(el) {
     var elem = document.getElementById(el);
     elem.style.transition = 'all 1s ease-in-out';
-    elem.style.transform = 'translateY(-158%)';//vertically downward
+    if (screenWidth.matches) {
+        elem.style.transform = 'translateY(2%)';//vertically downward
+    } else {
+        elem.style.transform = 'translateY(-158%)';
+    }
 }
 
 function hidePop() {
     document.getElementById('input').style.display = 'none';//hide the form
     document.body.style.backgroundColor = 'rgb(0,0,0,0)';
 }
+
 
 //Add click and drag scrolling to tracked items, refer to the code from https://codepen.io/thenutz/pen/VwYeYEE
 const slider = document.getElementById('list-container');
@@ -226,3 +235,23 @@ slider.addEventListener('mousemove', (e)=>{
     const walk = (x - startX) * 2; //the horizontal displacement distance of the filmlist, times 2 to scroll faster
     slider.scrollLeft = scrollL-walk;//transport the filmlist by setting its scroll position to the relative horizontal displacement (original scroll position subtract the dragged distance)
 })
+
+// //create consumption statistics and add to the details disclosure element
+// let localFilms = JSON.parse(localStorage.getItem('films'));
+// let filmCount = localFilms.length;//total number of movies watched
+// let sumRating = 0;
+// //get the sum of ratings
+// localFilms.forEach(function(film) {
+//     let r = parseFloat(film.rating);
+//     sumRating+=r;
+// });
+// let aveRating = (sumRating/filmCount).toFixed(1);//average rating across all films
+// let sum = document.getElementById('sum');
+// let total = document.createElement('div');
+// let t=document.getElementById('text');
+// total.innerHTML = `Number of <strong>movies watched</strong>: <strong>${filmCount}</strong><br>Their <strong>Average Rating</strong> is: <strong>${aveRating}</strong>`;
+// sum.replaceChild(total, t);//replace the empty div with new summary
+
+// console.log(localStorage);
+
+

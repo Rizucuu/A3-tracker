@@ -59,10 +59,10 @@
           </div>
        <!-- button: save the input -->
           <div class="form-row">
-            <input id='submit' style='font-size: 20px; font-weight: bold;' type="submit" value="SAVE"/>
+            <input id='submit' style='font-weight: bold;' type="submit" value="SAVE"/>
           </div>
         <!-- a button to close the form without filling out the input fields-->
-          <center><button id="close" onclick="hidePop()">CLOSE</button></center>
+          <center><button type='button' id="close" onclick="hidePop()">CLOSE</button></center>
         </form>
       </div> 
     </div>
@@ -72,6 +72,10 @@
       <div id="slideButton">
         <button id='slideUp' onclick="slideUp('overview');">Overview &#9650</button>
         <button id='slideDown' onclick="slideDown('overview');">Overview &#9660</button>
+        <!-- <details id="sum">
+          <summary>Summary</summary>
+          <p id="text"></p>
+        </details> -->
       </div>
       <!-- A carousel that holds and displays the tracked items, users get to navigate and interact with these items -->
       <div id="list-container">

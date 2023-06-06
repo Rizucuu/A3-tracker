@@ -58,6 +58,8 @@ html {
     border-radius: 15px;
     cursor: pointer;
     border: solid 0.5px #ffffff;
+    font-weight: bold;
+    font-family: 'Chakra Petch', sans-serif;;
 }
 
 #close:hover {
@@ -262,6 +264,7 @@ textarea:focus {
     cursor: pointer;
     width: 50%;
     transition-duration: 0.5s;
+    font-size: 20px;
 }
 
 #submit:hover {
@@ -298,14 +301,14 @@ textarea:focus {
     z-index: 2;
 }
 
-/* slide buttons placement */
+/* slide and summary buttons placement */
 #slideButton {
     display: flex;
     justify-content: center;
 }
 
-/* style and position for interactive buttons used to slide the overview section up and down */
-#slideUp, #slideDown{
+/* style and position for interactive buttons used to slide the overview section up and down*/
+#slideUp, #slideDown, details {
     border-radius: 15px;
     width: 9%;
     height: 20%;
@@ -323,6 +326,11 @@ textarea:focus {
     margin-left: 15px;
 }
 
+/* styles for the summary button */
+details > summary {
+    padding: 0.05em 0 0.05em 0.4em;
+}
+
 /* hover effect */
 #slideUp:hover {
     background-color: #ffffff;
@@ -333,6 +341,11 @@ textarea:focus {
     background-color: #ffffff;
     outline:#E2BF77;
 }
+
+/* details:hover {
+    background-color: #ffffff;
+    outline:#E2BF77;
+} */
 
 /* style for text in overview section*/
 /* create a horizontal scroll list */
@@ -363,7 +376,7 @@ li {
 
 /* film title */
 h2 {
-    color:#E2BF77;
+    color:#ffffff;
     font-family:'Chakra Petch', sans-serif;
     margin: 10px 0 10px 0;
 }
@@ -379,7 +392,6 @@ h2 {
 /* review text box */
 .reviews {
     display: flex;
-    align-items:flex-start;
     justify-content: center;
     width: 255px;
     height: 130px;
@@ -387,8 +399,9 @@ h2 {
     border: solid 2px #ffffff;
     font-family:'Chakra Petch', sans-serif;
     background-color:#E2BF77;
-    padding: 4px;
+    padding-top: -14px;
     overflow: scroll;
+    white-space: normal;
 }
 /* date text */
 .date {
@@ -405,10 +418,13 @@ li {
     border-radius: 15px;
     border: solid 2px #ffffff;
     background-color: #E2BF77;
-    margin-left: 5em;
+    margin-left: 0 auto;
     cursor: pointer;
-    width: 50%;
+    width: 100%;
     transition-duration: 0.5s;
+    font-family: 'Chakra Petch', sans-serif;
+    font-weight: bold;
+    font-size: 15px;
 }
 
 .delete:hover {
@@ -427,10 +443,12 @@ li {
 }
 
 .image:hover {
-    box-shadow: 10px 10px #E2BF77;
+    box-shadow: 10px 10px #ffffff;
 }
+
 /* Make the page layout responsive to smaller screen size */
 @media only screen and (max-width: 500px) {
+    /* single column grid structure */
     .container {  
         position:relative;
         display: grid;
@@ -443,12 +461,81 @@ li {
           "form"
           "nav";
         z-index: 1; /* stack under the overview section*/
-      }
-    .logo {
-        margin-right: 300px;
     }
-    .logo img {
-        width: 10%;
+    /* change the position of viewport background image */
+    html {
+        background-position: right;
+    }
 
+    /* resize logo */
+    .logo img {
+        width: 40%;
+    }
+
+    /* adjust the position of the open form button */
+    #open {
+        padding-top: 80%;
+    }
+
+    /* resize the open form button */
+    #open img {
+        width: 80%;
+    }
+
+    /* resize and adjust layout of the form */
+    .form-area {
+        width: 390px;
+        height: 72%;
+        top: 10%;
+        left: 0;
+    }
+
+    /* resize form row */
+    input {
+        height: 20px;
+    }
+
+    /* adjust size and position of different form elements */
+    /* multiple input tag */
+    .tagify {
+        height: 45px; 
+    }
+    /* rating indicator */
+    .form-row p {
+        margin-left: 20px;
+    }
+    /* rating scale indicative text */
+    #rating::before, #rating::after {
+        transform: translateY(2px);
+    }
+    /* review */
+    textarea {
+        width: 94%;
+    }
+    /* submit button */
+    #submit {
+        font-size: 15px;
+    }
+
+    /* resize and adjust appearrance & position of the overview section */
+    #overview {
+        background:#000000;
+        border-radius: 15px 15px 0 0;
+        margin: auto;/* horizontally center the overview section*/
+        width: 390px;
+        height: 830px;
+        transform: translateY(2%);
+        z-index: 2;
+    }
+    /* interactive buttons at the top */
+    #slideUp, #slideDown, details {
+        width: 30%;
+        margin: 15px 5px 5px 5px;
+        font-size: 18px;
+    }
+
+    /* film list */
+    #list-container {
+        margin-top: 10%;
     }
 }

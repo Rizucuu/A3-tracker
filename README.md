@@ -36,6 +36,7 @@ Added a button to close the form, in case the user no longer want to fill out th
 focus outline input field
 ### Lessons learned & Best practices
 * I attempted to use a GitHub library to create a dropdown list that allows for multiple genre selections, but its documentation is vague and incomplete, without any explanations on how it works and the output it produces. Consequently, I couldn’t retrieve all of the selected options to be used in JS functions. I then switched to the recommended tagify library, which gives clear and detailed instructions throughout, and I was able to track and utilize all the selected options. Through this experience, I have come to understand the significance of utilizing a thoroughly documented library and the benefits of keeping track of the development process.
+* After clicking the close button instead of the save (submit) button, I noticed multiple error messages in the console indicating that all the required form input controls were not focusable. To resolve this issue, I researched online and discovered that adding type='button' to the close button enables it to close the form without submitting it and bypasses the browser's validation, thereby avoiding the error.
 ## Overview
 ### Development process
 ### Iterations
@@ -49,7 +50,9 @@ focus outline input field
 * I encountered a lot of problems trying to create an carousel with the Splide.js library. The main issue was that in my case, the target items are meant to be added by the user in real-time, instead of being set beforehand (as is typical for applying an carousel). Consequently, I need to reload the page whenever a new item is added to make sure the DOM centent has been loaded and reconstruct the Splide carousel based on the new input. I also can't use the loop mode as it prevents items being properly deleted. The library is set to retain a copy of the minimum amount of items required to create a loop, and continues to display them even after deletion. These restrictions make it impossible for me to create a single page architecture that requires no page reload. Hence, I opted to construct a simple list presentation instead.
 ## Application Configuration:
 ### Screen dimensions and resolutions best for viewing the application
-**Dimensions** (width x depth): 13-inch Macbook (30.41 x 21.24 cm) (Google Chrome)
+**Dimensions** 
+* Desktop (width x depth): viewport size: 1440 x 821px (Google Chrome)
+* Mobile (width x depth): viewport size 390 x 821px (Google Chrome)
 **Resolutions**: 2560 x 1600 pixels
 ### Steps required to interact with the application
 1.
