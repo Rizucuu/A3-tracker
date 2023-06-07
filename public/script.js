@@ -4,7 +4,7 @@ const tagsInput = document.getElementById("tags");
 const tagify = new Tagify(tagsInput, {
     whitelist: ['Science Fiction', "Crime", "Drama", "Action", "Fantasy", "Comedy", "Horror", "Romance", "Sports", "Thriller", "Mystery", "War", "Western"], // whitelist of all available film genres
     enforceWhitelist: true, //user input must conform to the spelling of whitelist tags
-    maxTags: 3, // macimum number of tags that can be choosed at a time
+    maxTags: 3, // maximum number of tags that can be choosed at a time
     dropdown: {
       enabled: 0, // Enable the dropdown
       classname: "tags-drop", //classname for the dropdown list
@@ -49,6 +49,20 @@ function addFilm(name, directors, characters, genres, rating, review) {
             localFilms.push(film);//otherwise add the new entry to localStorage
         }
     }
+    //refresh the stats at the top of the overview section whenever a new film entry is added
+    let filmCount = localFilms.length;//total number of movies watched
+    let sumRating = 0;
+    //get the sum of ratings
+    localFilms.forEach(function(film) {
+        let r = parseFloat(film.rating);
+        sumRating+=r;
+    });
+    let aveRating = (sumRating/filmCount).toFixed(1);//average rating across all films
+    let sum = document.getElementById('sum');//get where to place the total number of movies watched
+    let ave = document.getElementById('ave');//get where to place the average rating
+    sum.innerHTML = `Number of <strong>movies watched</strong>: <strong>${filmCount}</strong>`;//replace the empty sum with new summary
+    ave.innerHTML = `Their <strong>average rating</strong> is: <strong>${aveRating}</strong>`;//replace the empty ave woth new average
+    
     //Turn the array into a string to store in localStorage
     localStorage.setItem('films', JSON.stringify(localFilms));
 
@@ -120,8 +134,31 @@ function displayFilms() {
             //Create items for the DOM and add to the display list
             let item = document.createElement('li');
             item.setAttribute('data-id', film.id);//assign id to the item so it can be identified and deleted
-            item.innerHTML = `<center><h2 class='filmGenre'>${film.genres}</h2><h2>${film.rating} / 10 </h2><div class='image'><img src='${filmImage}' width='210' height='290'/></div><h2 style='font-size: 25px;'><u>${film.name}</u></h2><p class='names'>Directed by: <strong>${film.directors}</strong></p>
-            <p class='names'>Fave Character(s): <strong>${film.characters}</strong></p><div class='reviews'><p style='text-align=center;'>"${film.review}"</p></div><p class='date'>${film.date}</p>`;
+            item.innerHTML = `<center><h2 class='filmGenre'>${film.genres}</h2><h2>${film.rating} / 10 </h2><div class='image'><img src='${filmImage}' width='210' height='290'/></div><h2 style='font-size: 22px;'><u>${film.name}</u></h2>`;
+
+            // Setup click to show/hide more information button for DOM elements
+            let infoButton = document.createElement('button');
+            infoButton.innerHTML = 'Click for More';
+            infoButton.setAttribute('class', 'info');
+            let moreInfo = document.createElement('div');//create a div to hold extra information
+            moreInfo.setAttribute('class', 'more');
+            moreInfo.innerHTML = `<center><p class='names'>Directed by: <strong>${film.directors}</strong></p><p class='names'>Fave Character(s): <strong>${film.characters}</strong></p><div class='reviews'><p style='text-align=center;'>"${film.review}"</p></div><p class='date'>${film.date}</p></center>`;
+            moreInfo.style.display = 'none';//hide by default
+            item.appendChild(infoButton);
+            item.appendChild(moreInfo);
+            infoButton.addEventListener('click', function(event){
+                localFilms.forEach(function (taskArrayElement, taskArrayIndex) {
+                    if (taskArrayElement.id == item.getAttribute('data-id')) {
+                        if (moreInfo.style.display === 'none') {//refer to the code from https://www.w3schools.com/howto/howto_js_read_more.asp
+                            moreInfo.style.display = 'block';//display the extra information if it wasn't shown previously
+                            infoButton.innerHTML = 'Click for Less';//change button text
+                        } else {
+                            moreInfo.style.display = 'none';//hide the extra infomation if it was shown previously
+                            infoButton.innerHTML = 'Click for More';
+                        }
+                    }
+                })
+            })
             filmlist.appendChild(item);
 
             //Clear the value of the input once the film entry has been added to the page
@@ -145,6 +182,20 @@ function displayFilms() {
                 localStorage.setItem('films', JSON.stringify(localFilms));
                 //remove the film item from the page when delete button is clicked
                 item.remove();
+
+                //refresh the stats at the top of the overview section whenever a film entry is deleted
+                let filmCount = localFilms.length;//total number of movies watched
+                let sumRating = 0;
+                //get the sum of ratings
+                localFilms.forEach(function(film) {
+                    let r = parseFloat(film.rating);
+                    sumRating+=r;
+                });
+                let aveRating = (sumRating/filmCount).toFixed(1);//average rating across all films
+                let sum = document.getElementById('sum');//get where to place the total number of movies watched
+                let ave = document.getElementById('ave');//get where to place the average rating
+                sum.innerHTML = `Number of <strong>movies watched</strong>: <strong>${filmCount}</strong>`;//replace the empty sum with new summary
+                ave.innerHTML = `Their <strong>average rating</strong> is: <strong>${aveRating}</strong>`;//replace the empty ave woth new average
             })
         })//Closing brackets for for loop
     }//Closing bracket for if statement
@@ -186,9 +237,9 @@ function slideUp(el) {
     elem.style.transition = 'all 1s ease-in-out';
     //if the screen width decreased, apply less vertical upward translation
     if (screenWidth.matches) {
-        elem.style.transform = 'translateY(-83%)';//vertically upward
+        elem.style.transform = 'translateY(-80%)';//vertically upward
     } else {
-        elem.style.transform = 'translateY(-245%)';
+        elem.style.transform = 'translateY(-250%)';
     }
 }
 
@@ -196,9 +247,9 @@ function slideDown(el) {
     var elem = document.getElementById(el);
     elem.style.transition = 'all 1s ease-in-out';
     if (screenWidth.matches) {
-        elem.style.transform = 'translateY(2%)';//vertically downward
+        elem.style.transform = 'translateY(6%)';//vertically downward
     } else {
-        elem.style.transform = 'translateY(-158%)';
+        elem.style.transform = 'translateY(-161%)';
     }
 }
 
@@ -236,22 +287,19 @@ slider.addEventListener('mousemove', (e)=>{
     slider.scrollLeft = scrollL-walk;//transport the filmlist by setting its scroll position to the relative horizontal displacement (original scroll position subtract the dragged distance)
 })
 
-// //create consumption statistics and add to the details disclosure element
-// let localFilms = JSON.parse(localStorage.getItem('films'));
-// let filmCount = localFilms.length;//total number of movies watched
-// let sumRating = 0;
-// //get the sum of ratings
-// localFilms.forEach(function(film) {
-//     let r = parseFloat(film.rating);
-//     sumRating+=r;
-// });
-// let aveRating = (sumRating/filmCount).toFixed(1);//average rating across all films
-// let sum = document.getElementById('sum');
-// let total = document.createElement('div');
-// let t=document.getElementById('text');
-// total.innerHTML = `Number of <strong>movies watched</strong>: <strong>${filmCount}</strong><br>Their <strong>Average Rating</strong> is: <strong>${aveRating}</strong>`;
-// sum.replaceChild(total, t);//replace the empty div with new summary
-
-// console.log(localStorage);
+//create media consumption statistics and add to the statistic section in the overview page
+let localFilms = JSON.parse(localStorage.getItem('films'));
+let filmCount = localFilms.length;//total number of movies watched
+let sumRating = 0;
+//get the sum of ratings
+localFilms.forEach(function(film) {
+    let r = parseFloat(film.rating);
+    sumRating+=r;
+});
+let aveRating = (sumRating/filmCount).toFixed(1);//average rating across all films
+let sum = document.getElementById('sum');//get where to place the total number of movies watched
+let ave = document.getElementById('ave');//get where to place the average rating
+sum.innerHTML = `Number of <strong>movies watched</strong>: <strong>${filmCount}</strong>`;
+ave.innerHTML = `Their <strong>average rating</strong> is: <strong>${aveRating}</strong>`;
 
 

@@ -1,9 +1,7 @@
 # Development Documentation
 ## Home page
-![Desktop Home page comparison](public/assets/homepage.png)
-Mockup(Up) and Prototype(down)
-![Mobile Home page comparison](url)
-Mockup(left) and Prototype(right)
+![Desktop & Mobile Home page](public/assets/homepage.png)
+Desktop(Left) and Mobile(right)
 ### Development process
 1. Implemented CSS grid to create a layout for the home page, also embeded logo, button, and background images and adjusted their appearance and position.
 2. Placed various elements into designated grid areas and incorporated a pop-up form and hover effect for the "what's on today" button.
@@ -16,38 +14,50 @@ Mockup(left) and Prototype(right)
 ### Lessons learned & Best practices
 * I originally intended to place the overview section above the homepage when the former expands. However, the grid layout used on the homepage caused it to be pushed to the side by the overview section. I tried to make them overlap by applying z-index to both sections, but this didn't work. I then learned from html reference page that z-index only works on elements that have a position setting, so I applied this to all sections, which messed up the placement of elements. After several attempts, I used relative and absolute positioning and flexbox to fix it.
 * I have attempted various methods to avoid the Overview section from overflowing the screen. This issue caused the webpage to duplicate and expand multiple times, leaving a significant amount of unused blank space. I even tried to remove the grid template but it didn’t make any difference, I searched online and find that this can be solved by simply setting the ‘overflow’ property to hidden. I’ve learned that it is more effective to check reference documents when trying to solve problems, rather than making uninformed assumptions.
-## User input form
-![Desktop Home page comparison]
-(url)
-Mockup(Up) and Prototype(down)
-![Mobile Home page comparison]
-(url)
-Mockup(left) and Prototype(right)
 
+## User input form
+![Desktop & Mobile User Input page](public/assets/Form1.png)
+Desktop(Left) and Mobile(right)
 ### Development process
+1. Added form structure and set up different input fields, also adjusted the appearance and position of the form area.
+2. Modified the layout and implemented desired functions to multiple input, range and textarea form areas, added submit and close buttons to the form.
+3. Added JS code to track and store user input after the submit button is pressed.
 ### Iterations
 #### Iteration 1:
-For multiple entry input field like directors and favorite characters, switched from simple text input to multiple tags input, so all values can be stored independtely in an array.
+For easier data manipulation and better user experience, input fields that accept multiple entries (directors and favorite characters) were switched from simple text input to multiple tags input. This allows for all values to be stored independently in an array, and users can easily add or remove entries as needed.
 #### Iteration 2:
-dropdown list to tag selection fields, showing all available options in an intuitive and straigtforward manner, user also get to type and find recommended genre tags
+Genre selection fields were switched from a dropdown list to a tag selection field, which displays all available options in an intuitive and straightforward manner. Additionally, users can also type in their desired genre and receive recommendations.
 #### Iteration 3:
-Added a button to close the form, in case the user no longer want to fill out the form.
+A close button has been incorporated into the form enabling users to close the form without submitting it. This feature enhances user control and freedom as it provides a way to leave the unwanted state (filling the form) without consequences.
 ### Improvements
-focus outline input field
+* Keep users informed by adding a focus state to input fields, which outlines the active (selected) form row and increases font size, which also enhances the readability and accessibility of the form.
+* For mobile devices, all multiple input fields is set to be scrollable and self-contained, so that tags don't flow out of the input field and block other fields.
+* To prevent false triggering on a small screen, increased vertical space between buttons and between form fields, also adjusted the size of submit and close buttons. 
 ### Lessons learned & Best practices
 * I attempted to use a GitHub library to create a dropdown list that allows for multiple genre selections, but its documentation is vague and incomplete, without any explanations on how it works and the output it produces. Consequently, I couldn’t retrieve all of the selected options to be used in JS functions. I then switched to the recommended tagify library, which gives clear and detailed instructions throughout, and I was able to track and utilize all the selected options. Through this experience, I have come to understand the significance of utilizing a thoroughly documented library and the benefits of keeping track of the development process.
 * After clicking the close button instead of the save (submit) button, I noticed multiple error messages in the console indicating that all the required form input controls were not focusable. To resolve this issue, I researched online and discovered that adding type='button' to the close button enables it to close the form without submitting it and bypasses the browser's validation, thereby avoiding the error.
 ## Overview
+![Desktop & Mobile overview page](public/assets/overview.png)
+Desktop(Left) and Mobile(right)
 ### Development process
+1. Set up the layout with slide up/down buttons and a film list, adjusted their appearance and position.
+2. Added code to display and interact with the filmlist, including functionality for the click for more/less, and delete buttons.
+3. Added code to calculate and update media consumption statistics, also added a section to display the result at the top of the overview page.
 ### Iterations
+#### Iteration 1:
+Based on the feedback from the tutor, I refined the scope and design of the overview section by simplifying it into one page with some statistics rather than breaking it into three different pages.
+#### Iteration 2:
+As suggested by the tutor, I added different user states other than simply viewing the film list. One of them is click to see all details of a tracked film, and the other is click to delete a tracked film.
+#### Iteration 3:
+To enhance readability of the text content, I increased the font size and set up scrollable text box for the review section. Each film entry also expands when the click for more botton is clicked.
 ### Improvements
-* Inspired by one sentence film review on Rotten Tomatoes, show one's opinion without being troublesome to fill up
-* highlight interactable elements with white borders
-* added click and drag scrolling for mobile device 
+* For a more intuitive and effortless user experience, I highlighted all interactable elements of a list item with white borders, so they can be spotted by the user right away.
+* Added click and drag scrolling for touch-screen-based devices, users can either scroll or drag the film list as they needed. 
 ### Lessons learned & Best practices
 * I attempted to utilize the IMDb API to locate the exact movie poster for the thumbnail image. However, it appears that all the available APIs require payment for permission to use. Thus, I chose to use preset images based on film genres instead.
 * I attempted to use glide.js to build an image carousel for user inputs, but it turned out to be incompatible with the software stack my prototype is using. As a result, my app was not functioning properly and a lot of errors were appearing in the console. However, I was able to resolve this issue by switching to splide.js, a similar library that works perfectly with my code. I realized that it's important to be flexible and open to different approaches when one method is not effective, or you’ll just end up wasting more time.
 * I encountered a lot of problems trying to create an carousel with the Splide.js library. The main issue was that in my case, the target items are meant to be added by the user in real-time, instead of being set beforehand (as is typical for applying an carousel). Consequently, I need to reload the page whenever a new item is added to make sure the DOM centent has been loaded and reconstruct the Splide carousel based on the new input. I also can't use the loop mode as it prevents items being properly deleted. The library is set to retain a copy of the minimum amount of items required to create a loop, and continues to display them even after deletion. These restrictions make it impossible for me to create a single page architecture that requires no page reload. Hence, I opted to construct a simple list presentation instead.
+* To add media consumption statistics to the page, I used the appendchild() method but ended up with multiple output because the calculation happens inside loops. I then switched it to the replacechild() method, this did create single output but is not reusable since the node get replaced after one loop, and the same node identifier can't be used for the next loop. I then realized that I can simply set the content of the statistic field with innerhtml, so that the stats get refresed and displayed correctly.
 ## Application Configuration:
 ### Screen dimensions and resolutions best for viewing the application
 **Dimensions** 
@@ -55,9 +65,7 @@ focus outline input field
 * Mobile (width x depth): viewport size 390 x 821px (Google Chrome)
 **Resolutions**: 2560 x 1600 pixels
 ### Steps required to interact with the application
-1.
-2.
-3.
+1. Refresh the page if ever switched between desktop view to mobile view with transformed overview section, as the transition triggered by slide up/down feature is different for different screen size.
 
 ## Deployment Procedures:
 
@@ -91,7 +99,7 @@ Implement lazy loading techniques to improve initial page load times, especially
 Consider building native mobile apps (iOS and Android) using frameworks like React Native or Flutter to provide a dedicated mobile experience.
 #### Data Analytics and Insights:
 * Explore opportunities to leverage user data to provide valuable insights. Consider implementing analytics tools to track user engagement, popular movies, user preferences, and other relevant metrics.
-* Provide visualizations and statistics that allow users to track their movie consumption patterns, genres they prefer, and average ratings given.
+* Provide visualizations and statistics that allow users to track their movie consumption patterns, genres they prefer, etc.
 #### Social Features and Community:
 * Consider adding social features that allow users to connect, follow each other, and share their movie habits or recommendations.
 * Implement features like comments, likes, and user reviews to facilitate user interactions and build an engaged community.
@@ -107,6 +115,9 @@ https://blog.hubspot.com/website/html-slider
 
 W3 Schools. (2023). *W3Schools How To -- Popup Form*.
 https://www.w3schools.com/howto/howto_js_popup_form.asp
+
+W3 Schools. (2023). *How TO - Read More Read Less Button*.
+https://www.w3schools.com/howto/howto_js_read_more.asp
 
 Yair Even Or. (2023). tagify [JS Library]. 
 https://github.com/yairEO/tagify
