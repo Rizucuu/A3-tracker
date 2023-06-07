@@ -63,7 +63,8 @@ To enhance readability of the text content, I increased the font size and set up
 **Dimensions** 
 * Desktop (width x depth): viewport size: 1440 x 821px (Google Chrome)
 * Mobile (width x depth): viewport size 390 x 821px (Google Chrome)
-**Resolutions**: 2560 x 1600 pixels
+**Resolutions**
+2560 x 1600 pixels
 ### Steps required to interact with the application
 1. Refresh the page if ever switched between desktop view to mobile view with transformed overview section, as the transition triggered by slide up/down feature is different for different screen size.
 
